@@ -8,7 +8,7 @@ export default function formatStudent(unformattedStudent, familyNameList) {
   student.gender = getGender(unformattedStudent);
   student.house = getHouse(unformattedStudent);
   student.photo = getPhoto(unformattedStudent);
-  student.blood = getBloodStatus(unformattedStudent, familyNameList);
+  student.bloodStatus = getBloodStatus(unformattedStudent, familyNameList);
   student.captain = getCaptaincy(student.firstName);
   student.prefect = false;
   student.inquisitor = false;
@@ -90,13 +90,13 @@ function getPhoto(unformattedStudent) {
   //   if (lastName === studentLastName) lastNameCount++;
   // });
 
-  // if (lastNameCount > 1) {
-  //   firstName = firstName;
-  // } else {
-  //   firstName = firstName[0];
-  // }
+  if (lastNameCount > 1) {
+    firstName = firstName;
+  } else {
+    firstName = firstName[0];
+  }
 
-  let photoSrc = `images/students/${lastName}_${firstName}.png`;
+  let photoSrc = `${lastName}_${firstName}.png`;
 
   return photoSrc;
 }
@@ -104,27 +104,27 @@ function getPhoto(unformattedStudent) {
 function getBloodStatus(unformattedStudent, familyNameList) {
   //Get student last name
   const lastName = getLastName(unformattedStudent);
-  let bloodtype;
+  let bloodStatus;
 
   //Check pure blood names first
   familyNameList.pure.forEach((familyName) => {
     if (lastName === familyName) {
-      bloodtype = `Pure-blood`;
+      bloodStatus = `Pure-blood`;
     }
   });
 
   //Check half blood names last to overwrite pure-blood
   familyNameList.half.forEach((familyName) => {
     if (lastName === familyName) {
-      bloodtype = `Half-blood`;
+      bloodStatus = `Half-blood`;
     }
   });
 
-  if (bloodtype === undefined) {
-    bloodtype = `Muggle-born`;
+  if (bloodStatus === undefined) {
+    bloodStatus = `Muggle-born`;
   }
 
-  return bloodtype;
+  return bloodStatus;
 }
 
 function getCaptaincy(name) {

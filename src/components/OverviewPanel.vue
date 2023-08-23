@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed max-w-[13rem] grid gap-4 p-4 text-center">
+  <section class="fixed max-w-[13rem] grid gap-4 p-4 text-center">
     <div>
       <div>
         <h1 class="text-3xl mb-2">Hogwarts</h1>
@@ -29,7 +29,7 @@
       <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest">
     </div>
     <h3 class="text-2xl">Currently Displayed: </h3>
-  </div>
+  </section>
 </template>
 
 <script setup>
