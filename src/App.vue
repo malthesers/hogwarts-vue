@@ -7,4 +7,17 @@
 </template>
 
 <script setup>
+import studentsData from './assets/students.json'
+import families from './assets/families.json'
+import formatStudent from './composables/reformatting.js'
+
+const familyNames = ref({...families})
+const formattedStudents = ref([])
+
+onMounted(() => {
+  studentsData.forEach((student) => {
+    const formattedStudent = formatStudent(student, familyNames.value)
+    formattedStudents.value.push(formatStudent)
+  })
+})
 </script>
