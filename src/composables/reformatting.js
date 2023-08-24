@@ -1,6 +1,10 @@
 export default function formatStudent(unformattedStudent, students, familyNameList) {
   const lastNameList = getLastNameList(students);
-  const student = {};
+  const student = {
+    prefect: false,
+    expelled: false,
+    inquisitor: false,
+  };
 
   student.firstName = getFirstName(unformattedStudent);
   student.middleName = getMiddleName(unformattedStudent);
@@ -11,9 +15,6 @@ export default function formatStudent(unformattedStudent, students, familyNameLi
   student.photo = getPhoto(unformattedStudent, lastNameList);
   student.bloodStatus = getBloodStatus(unformattedStudent, familyNameList);
   student.captain = getCaptaincy(student.firstName);
-  student.prefect = false;
-  student.inquisitor = false;
-  student.expelled = false;
 
   return student;
 }
