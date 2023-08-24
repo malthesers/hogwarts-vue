@@ -1,12 +1,8 @@
 <template>
-  <main class="bg-[#392a48] text-[#FAECBF] font-merinda min-h-screen">
-    <section class="max-w-7xl mx-auto grid grid-cols-[13rem_auto]">
-      <div>
-        <OverviewPanel/>
-      </div>
-      <div>
+  <main class="bg-[#392a48] text-[#FAECBF] font-merinda">
+    <section class="max-w-6xl mx-auto grid grid-cols-[13rem_auto]">
+        <OverviewPanel :students="allStudents"/>
         <StudentList :students="students"/>
-      </div>
     </section>
   </main>
 </template>
@@ -17,17 +13,16 @@ import families from './assets/families.json'
 import formatStudent from './composables/reformatting.js'
 
 const familyNames = ref({...families})
-const formattedStudents = ref([])
+const allStudents = ref([])
 
 const students = computed(() => {
-  return formattedStudents.value
+  return allStudents.value
 })
 
 onMounted(() => {
   studentsData.forEach((student) => {
     const formattedStudent = formatStudent(student, studentsData, familyNames.value)
-    formattedStudents.value.push(formattedStudent)
-    console.log(formattedStudent)
+    allStudents.value.push(formattedStudent)
   })
 })
 </script>
