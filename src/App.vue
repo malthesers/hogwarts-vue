@@ -25,7 +25,7 @@ const students = computed(() => {
 
 onMounted(() => {
   studentsData.forEach((student) => {
-    const formattedStudent = formatStudent(student, familyNames.value)
+    const formattedStudent = formatStudent(student, studentsData, familyNames.value)
     formattedStudents.value.push(formattedStudent)
     console.log(formattedStudent)
   })

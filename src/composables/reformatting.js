@@ -1,4 +1,5 @@
-export default function formatStudent(unformattedStudent, familyNameList) {
+export default function formatStudent(unformattedStudent, students, familyNameList) {
+  const lastNameList = getLastNameList(students);
   const student = {};
 
   student.firstName = getFirstName(unformattedStudent);
@@ -7,7 +8,7 @@ export default function formatStudent(unformattedStudent, familyNameList) {
   student.lastName = getLastName(unformattedStudent);
   student.gender = getGender(unformattedStudent);
   student.house = getHouse(unformattedStudent);
-  student.photo = getPhoto(unformattedStudent);
+  student.photo = getPhoto(unformattedStudent, lastNameList);
   student.bloodStatus = getBloodStatus(unformattedStudent, familyNameList);
   student.captain = getCaptaincy(student.firstName);
   student.prefect = false;
@@ -68,7 +69,7 @@ function getHouse(unformattedStudent) {
   return capitalise(unformattedStudent.house);
 }
 
-function getPhoto(unformattedStudent) {
+function getPhoto(unformattedStudent, lastNameList) {
   //Extract fullName
   let fullName = unformattedStudent.fullname.trim().toLowerCase();
 
@@ -86,9 +87,9 @@ function getPhoto(unformattedStudent) {
   //Handle duplicate lastName scenarios
   let lastNameCount = 0;
 
-  // lastNameList.forEach((studentLastName) => {
-  //   if (lastName === studentLastName) lastNameCount++;
-  // });
+  lastNameList.forEach((studentLastName) => {
+    if (lastName === studentLastName) lastNameCount++;
+  });
 
   if (lastNameCount > 1) {
     firstName = firstName;
@@ -102,50 +103,31 @@ function getPhoto(unformattedStudent) {
 }
 
 function getBloodStatus(unformattedStudent, familyNameList) {
-  //Get student last name
-  const lastName = getLastName(unformattedStudent);
-  let bloodStatus;
+  let bloodStatus = "Muggle-born";
 
-  //Check pure blood names first
-  familyNameList.pure.forEach((familyName) => {
-    if (lastName === familyName) {
-      bloodStatus = `Pure-blood`;
-    }
-  });
-
-  //Check half blood names last to overwrite pure-blood
-  familyNameList.half.forEach((familyName) => {
-    if (lastName === familyName) {
-      bloodStatus = `Half-blood`;
-    }
-  });
-
-  if (bloodStatus === undefined) {
-    bloodStatus = `Muggle-born`;
-  }
+  if (familyNameList.pure.includes(unformattedStudent.lastName)) bloodStatus = "Pure-blood";
+  if (familyNameList.half.includes(unformattedStudent.lastName)) bloodStatus = "Half-blood";
 
   return bloodStatus;
 }
 
 function getCaptaincy(name) {
-  if (name === "Harry" || name === "Zacharias" || name === "Pansy" || name === "Anthony") {
-    return true;
-  } else {
-    return false;
-  }
+  return ["Harry", "Zacharias", "Pansy", "Anthony"].includes(name);
 }
 
 function getLastNameList(students) {
+  let lastNameList = [];
+
   students.forEach((student) => {
     let lastName = student.fullname.trim().toLowerCase();
-    lastName = handleLastName(lastName);
+    lastName = lastName.substring(lastName.lastIndexOf(" ") + 1);
 
-    if (lastName.includes("-")) {
-      lastName = handleHyphenedLastName(lastName);
-    }
+    if (lastName.includes("-")) lastName = lastName.substring(lastName.lastIndexOf("-") + 1);
 
     lastNameList.push(lastName);
   });
+
+  return lastNameList;
 }
 
 function capitalise(textToCapitalise) {
