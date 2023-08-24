@@ -1,7 +1,7 @@
 <template>
-  <article class="w-full mb-4">
-    <div/>
-    <div @click="showDetails = !showDetails" class="grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
+  <article class="relative w-full mb-4">
+    <div :class="`bg-[url('@/images/crests/${student.house}-crest.svg')]`" class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-center bg-[length:15rem]"></div>
+    <div @click="showDetails = !showDetails" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
       <div class="text-3xl grid grid-cols-3 items-center">
         <p>{{ student.firstName }}</p>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <Transition name="slide">
-      <div v-if="showDetails" class="max-h-80 grid grid-cols-3 text-xl overflow-hidden">
+      <div v-if="showDetails" class="relative max-h-80 grid grid-cols-3 text-xl overflow-hidden">
         <div class="col-span-2 mt-4">
           <p>Full name: {{ student.lastName }}, {{ student.firstName }}</p>
           <p class="mt-2">Blood status: {{ student.bloodStatus }}</p>
