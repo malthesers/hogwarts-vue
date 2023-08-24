@@ -26,7 +26,7 @@ function getMiddleName(unformattedStudent) {
   let fullName = capitalise(unformattedStudent.fullname).split(" ");
   let middleName = fullName.join(" ");
 
-  if (fullName.length > 2 && middleName.includes('"') === false) {
+  if (fullName.length > 2 && !middleName.includes('"')) {
     middleName = middleName.substring(middleName.indexOf(" ") + 1, middleName.lastIndexOf(" "));
   } else {
     middleName = undefined;
@@ -39,7 +39,7 @@ function getNickName(unformattedStudent) {
   let fullName = capitalise(unformattedStudent.fullname).split(" ");
   let nickName = fullName.join(" ");
 
-  if (fullName.length > 2 && nickName.includes('"') === true) {
+  if (fullName.length > 2 && nickName.includes('"')) {
     nickName = nickName.substring(nickName.indexOf(" ") + 1, nickName.lastIndexOf(" "));
   } else {
     nickName = undefined;
@@ -50,13 +50,7 @@ function getNickName(unformattedStudent) {
 
 function getLastName(unformattedStudent) {
   let fullName = capitalise(unformattedStudent.fullname).split(" ");
-  let lastName;
-
-  if (fullName.length > 1) {
-    lastName = fullName[fullName.length - 1];
-  } else {
-    lastName = undefined;
-  }
+  let lastName = fullName.length > 1 ? fullName[fullName.length - 1] : undefined;
 
   return lastName;
 }
@@ -70,34 +64,27 @@ function getHouse(unformattedStudent) {
 }
 
 function getPhoto(unformattedStudent, lastNameList) {
-  //Extract fullName
+  // Get names
   let fullName = unformattedStudent.fullname.trim().toLowerCase();
-
-  //Extract lastName from fullName
   let lastName = fullName.substring(fullName.lastIndexOf(" ") + 1);
-
-  //Handle hyphenated lastName scenarios
-  if (lastName.includes("-")) {
-    lastName = lastName.substring(lastName.lastIndexOf("-") + 1);
-  }
-
-  //Extract firstName from fullName
   let firstName = fullName.substring(0, fullName.indexOf(" "));
 
-  //Handle duplicate lastName scenarios
+  // Handle hyphenated lastName scenarios
+  if (lastName.includes("-")) lastName = lastName.substring(lastName.lastIndexOf("-") + 1);
+
+  // Handle duplicate lastName scenarios
   let lastNameCount = 0;
 
   lastNameList.forEach((studentLastName) => {
     if (lastName === studentLastName) lastNameCount++;
   });
 
-  if (lastNameCount > 1) {
-    firstName = firstName;
-  } else {
-    firstName = firstName[0];
-  }
+  // Use initial if unique last name
+  if (lastNameCount === 1) firstName = firstName[0];
 
   let photoSrc = `${lastName}_${firstName}.png`;
+
+  if (photoSrc.includes("undefined")) photoSrc = "_default.png";
 
   return photoSrc;
 }
@@ -131,13 +118,13 @@ function getLastNameList(students) {
 }
 
 function capitalise(textToCapitalise) {
-  //Make everything lower case
+  // Make everything lower case
   textToCapitalise = textToCapitalise.toLowerCase().trim();
 
-  //Array of filters to capitalise following letters
+  // Array of filters to capitalise following letters
   const filters = [" ", "-", '"'];
 
-  //Loop through each filter
+  // Loop through each filter
   filters.forEach((filter) => {
     textToCapitalise = textToCapitalise
       .split(`${filter}`)
