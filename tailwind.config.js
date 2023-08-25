@@ -5,6 +5,11 @@ module.exports = {
     fontFamily: {
       merinda: ["Merienda, serif, system-ui"],
     },
+    colors: {
+      "hogwarts-accent": "#FAECBF",
+      "hogwarts-light": "#392A48",
+      "hogwarts-dark": "#2F223A",
+    },
     extend: {},
   },
   plugins: [],

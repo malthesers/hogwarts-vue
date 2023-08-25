@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-[#392a48] text-[#FAECBF] font-merinda">
+  <main class="bg-hogwarts-light text-hogwarts-accent font-merinda">
     <section class="max-w-6xl mx-auto grid grid-cols-[13rem_auto]">
         <OverviewPanel :students="allStudents"/>
         <StudentList :students="students"/>

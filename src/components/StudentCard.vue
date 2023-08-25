@@ -22,9 +22,9 @@
           <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-20">
         </div>
         <div class="grid grid-cols-3 col-span-3 gap-1 my-4">
-          <button class="bg-[#faecbf] text-[#2f223a] p-1">Prefect</button>
-          <button class="bg-[#faecbf] text-[#2f223a] p-1">Inquisitor</button>
-          <button class="bg-red-600 text-[#faecbf] p-1">Expel Student</button>
+          <button class="bg-hogwarts-accent text-hogwarts-dark p-1">Prefect</button>
+          <button class="bg-hogwarts-accent text-hogwarts-dark p-1">Inquisitor</button>
+          <button class="bg-red-600 text-hogwarts-accent p-1">Expel Student</button>
         </div>
       </div>
     </Transition>
