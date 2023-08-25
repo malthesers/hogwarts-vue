@@ -1,35 +1,57 @@
-# vue-boilerplate
+# ![hogwarts crest](https://github.com/malthesers/hogwarts/blob/main/favicon/favicon-32x32.png) Hogwarts
 
-This template should help get you started developing with Vue 3 in Vite.
+Made as part of KEA's multimedia design, during third semester front-end development course.
 
-## Recommended IDE Setup
+Assume the role of a Hogwarts system administrator [right here](https://malthesers.github.io/hogwarts/).
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+There is a ~5% chance that the student list might not be displayed. If it happens, simply reload.
 
-## Customize configuration
+## 📋 Instructions
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### 🏠 House Navigation
 
-## Project Setup
+Due to poor UX, it may not have been noticeable, but the loading animation crest serves as a way to navigate from house to house.
 
-```sh
-npm install
-```
+Click it at the bottom of the screen to open the menu and hit any house to visit that house, changing the logo and colour theme.
 
-### Compile and Hot-Reload for Development
+To return to the original list, hit the 'H' in the middle of the four houses.
 
-```sh
-npm run dev
-```
+### 🛡️ Admin Powers
 
-### Compile and Minify for Production
+Browse the students of Hogwarts with the option to:
+- make 2 students of each house prefects, but only 1 of each gender - JKR putting NBs in shambles
+- make any student an inquisitor if they are from that one evil house or they are full-blood - JKR loves eugenics I guess
+- expel anyone. yep.
 
-```sh
-npm run build
-```
+### 👀 Searching, filtering and sorting
 
-### Lint with [ESLint](https://eslint.org/)
+#### 🔍 Searching
 
-```sh
-npm run lint
-```
+Search through students by their first and last name using the input field next to the magnifying glass looking wand thingy.
+
+It matches by anywhere in the either first or last name.
+
+#### 📛 Filtering
+
+To open the filtering click next to the badge icon to enable filtering by:
+- All Students
+- Current Studets
+- Expelled Students
+- Captains
+- Prefects
+- Inquisitors
+
+#### ↕️ Sorting
+
+Sort by either first name, last name or house in alphabetical order by clicking next to the hat icon.
+
+Reversable by clicking again. Default is first name a-to-z.
+
+### 👨🏻‍💻 Hacking Hogwarts
+
+To hack Hogwarts, input *imperio* in the search field and hit enter.
+
+You might notice some changes:
+- regarding blood status,
+- when making students inquisitors,
+- and a new student? I wonder what might happen if you expel them one too many times...
