@@ -6,6 +6,7 @@ export default function formatStudent(unformattedStudent, students, familyNameLi
     inquisitor: false,
   };
 
+  student.fullName = capitalise(unformattedStudent.fullname);
   student.firstName = getFirstName(unformattedStudent);
   student.middleName = getMiddleName(unformattedStudent);
   student.nickName = getNickName(unformattedStudent);
