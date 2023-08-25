@@ -1,10 +1,8 @@
 # ![hogwarts crest](https://github.com/malthesers/hogwarts/blob/main/favicon/favicon-32x32.png) Hogwarts
 
-Made as part of KEA's multimedia design, during third semester front-end development course.
+Vue clone of [Hogwarts](https://github.com/malthesers/hogwarts).
 
 Assume the role of a Hogwarts system administrator [right here](https://malthesers.github.io/hogwarts/).
-
-There is a ~5% chance that the student list might not be displayed. If it happens, simply reload.
 
 ## 📋 Instructions
 
