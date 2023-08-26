@@ -3,7 +3,7 @@
     <div :class="`bg-[url('@/images/crests/${student.house}-crest.svg')]`" class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-center bg-[length:15rem]"></div>
     <div @click="showDetails = !showDetails" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
-      <div class="text-3xl grid grid-cols-3 items-center">
+      <div class="text-xl flex flex-col items-start justify-between my-2 sm:text-3xl sm:grid sm:grid-cols-3 sm:items-center">
         <p>{{ student.firstName }}</p>
         <p>{{ student.lastName }}</p>
         <p>{{ student.house }}</p>
@@ -11,7 +11,7 @@
     </div>
     <Transition name="slide">
       <div v-if="showDetails" class="relative max-h-80 grid grid-cols-3 text-xl overflow-hidden">
-        <div class="col-span-2 mt-4">
+        <div class="flex flex-col justify-center col-span-2">
           <p>Full name: {{ student.lastName }}, {{ student.firstName }}</p>
           <p class="mt-2">Blood status: {{ student.bloodStatus }}</p>
         </div>

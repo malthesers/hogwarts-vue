@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <div class="fixed max-w-[13rem] grid gap-4 p-4 text-center">
+    <div class="sm:fixed w-full sm:max-w-[13rem] grid grid-cols-2 sm:grid-cols-1 gap-4 p-4 text-center">
       <div>
         <div>
           <h1 class="text-3xl mb-2">Hogwarts</h1>
@@ -29,7 +29,7 @@
       <div>
         <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest">
       </div>
-      <h3 class="text-2xl">Currently Displayed: </h3>
+      <h3 class="text-2xl col-span-2">Currently Displayed: {{ students.length }}</h3>
     </div>
   </aside>
 </template>
