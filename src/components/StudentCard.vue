@@ -10,21 +10,23 @@
       </div>
     </div>
     <Transition name="slide">
-      <div v-if="showDetails" class="relative max-h-80 grid grid-cols-3 text-xl overflow-hidden">
-        <div class="flex flex-col justify-center col-span-3 sm:col-span-2">
-          <p>Full name: {{ student.lastName }}, {{ student.firstName }}</p>
-          <p class="mt-2">Blood status: {{ student.bloodStatus }}</p>
+      <div v-if="showDetails" class="relative max-h-80 text-xl overflow-hidden">
+        <div class="sm:flex sm:justify-between">
+          <div class="text-base sm:text-xl flex flex-col justify-center gap-2 col-span-3 sm:col-span-2">
+            <p>Full name: {{ student.lastName }}, {{ student.firstName }}</p>
+            <p>Blood status: {{ student.bloodStatus }}</p>
+          </div>
+          <div class="mt-4 flex gap-2 justify-between col-span-3 sm:col-span-1">
+            <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20">
+            <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20">
+            <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20">
+            <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-20">
+          </div>
         </div>
-        <div class="mt-4 flex justify-between col-span-3 sm:col-span-1">
-          <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20">
-          <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20">
-          <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20">
-          <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-20">
-        </div>
-        <div class="grid grid-cols-3 col-span-3 gap-1 my-4">
-          <button class="bg-hogwarts-accent text-hogwarts-dark p-1">Prefect</button>
-          <button class="bg-hogwarts-accent text-hogwarts-dark p-1">Inquisitor</button>
-          <button class="bg-red-600 text-hogwarts-accent p-1">Expel Student</button>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 col-span-3 my-4">
+          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2">Prefect</button>
+          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2">Inquisitor</button>
+          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 sm:col-span-1">Expel Student</button>
         </div>
       </div>
     </Transition>
