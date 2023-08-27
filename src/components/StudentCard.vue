@@ -17,10 +17,10 @@
             <p>Blood status: {{ student.bloodStatus }}</p>
           </div>
           <div class="mt-4 sm:mt-0 flex gap-2 justify-between col-span-3 sm:col-span-1">
-            <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20">
-            <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20">
-            <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20">
-            <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-20">
+            <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
+            <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
+            <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
+            <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
           </div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 col-span-3 my-4">
@@ -56,7 +56,7 @@ const showDetails = ref(false)
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: max-height 250ms ease-in-out;
+  transition: max-height 350ms ease-in-out;
 }
 
 .slide-enter-from,
