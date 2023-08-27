@@ -1,8 +1,8 @@
 <template>
   <article class="relative w-full mb-4 overflow-hidden">
     <!-- <div :style="{ backgroundImage: `url(/images/crests/${student.house.toLowerCase()}-crest.svg)`}" class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-top bg-[length:18rem]"></div> -->
-    <div class="absolute top-0 left-0 grid w-full h-full">
-      <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="m-auto w-64 opacity-20">
+    <div class="absolute top-0 left-0 p-4 grid w-full h-full">
+      <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 sm:w-1/4 m-auto opacity-20">
     </div>
     <div @click="showDetails = !showDetails" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
