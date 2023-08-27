@@ -62,6 +62,8 @@ const sortingMethods = ref([
 const filteredStudents = computed(() => {
   let filteredStudents = []
   filteredStudents = props.students.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
+  filteredStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
+
   return filteredStudents
 })
 </script>
