@@ -14,8 +14,10 @@
         <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center sm:row-start-1 sm:col-start-1">
       </div>
     </div>
-    <div class="sm:p-4">
-      <StudentCard v-for="student in filteredStudents" :key="student" :student="student" />
+    <div class="relative sm:p-4">
+      <TransitionGroup name="student">
+        <StudentCard v-for="student in filteredStudents" :key="student" :student="student" />
+      </TransitionGroup>
     </div>
   </section>
 </template>
@@ -37,5 +39,20 @@ const filteredStudents = computed(() => {
 <style scoped>
 input {
   -webkit-appearance: none;
+}
+
+.student-move,
+.student-enter-active,
+.student-leave-active {
+  transition: all 0.5s ease;
+}
+
+.student-enter-from,
+.student-leave-to {
+  opacity: 0;
+}
+
+.student-leave-active {
+  position: absolute;
 }
 </style>
