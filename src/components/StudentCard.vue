@@ -16,7 +16,7 @@
             <p>Full name: {{ student.lastName }}, {{ student.firstName }}</p>
             <p>Blood status: {{ student.bloodStatus }}</p>
           </div>
-          <div class="mt-4 flex gap-2 justify-between col-span-3 sm:col-span-1">
+          <div class="mt-4 sm:mt-0 flex gap-2 justify-between col-span-3 sm:col-span-1">
             <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20">
             <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20">
             <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20">
@@ -24,9 +24,21 @@
           </div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 col-span-3 my-4">
-          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2">Prefect</button>
-          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2">Inquisitor</button>
-          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 sm:col-span-1">Expel Student</button>
+          <button @click="student.prefect = !student.prefect" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+            <p>Prefect</p>
+            <Transition name="fade" mode="out-in">
+              <span :key="student.prefect">{{ student.prefect ? '-' : '+' }}</span>
+            </Transition>
+          </button>
+          <button @click="student.inquisitor = !student.inquisitor" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+            <p>Inquisitor</p>
+            <Transition name="fade" mode="out-in">
+              <span :key="student.inquisitor">{{ student.inquisitor ? '-' : '+' }}</span>
+            </Transition>
+          </button>
+          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 sm:col-span-1">
+            <p>Expel Student</p>
+          </button>
         </div>
       </div>
     </Transition>
@@ -44,11 +56,22 @@ const showDetails = ref(false)
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: max-height 300ms ease-in-out;
+  transition: max-height 250ms ease-in-out;
 }
 
 .slide-enter-from,
 .slide-leave-to {
   max-height: 0;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 250ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
