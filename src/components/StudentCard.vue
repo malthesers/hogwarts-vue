@@ -1,6 +1,7 @@
 <template>
   <article class="relative w-full mb-4">
-    <div :class="`bg-[url('@/images/crests/${student.house}-crest.svg')]`" class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-center bg-[length:15rem]"></div>
+    <div  :style="{ backgroundImage: `url(/images/crests/${student.house.toLowerCase()}-crest.svg)`}"
+          class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-top bg-[length:18rem]"></div>
     <div @click="showDetails = !showDetails" class="relative mb-2 grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
       <div class="text-xl flex flex-col items-start justify-between my-2 sm:text-3xl sm:grid sm:grid-cols-3 sm:items-center">
