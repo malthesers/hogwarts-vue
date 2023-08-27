@@ -43,7 +43,7 @@ const props = defineProps({
 const search = ref('')
 
 const showSortingMethods = ref(false)
-const sorting = ref('')
+const sorting = ref('firstName')
 const sortingMethods = ref([
   {
     key: 'firstName',
