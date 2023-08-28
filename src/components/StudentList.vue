@@ -12,7 +12,7 @@
             <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ showFilteringMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300">
           </p>
           <Transition name="slide">
-            <div v-if="showFilteringMethods" class="max-h-60 overflow-hidden">
+            <div v-if="showFilteringMethods" class="max-h-68 overflow-hidden">
               <p v-for="method in filteringMethods" :key="method.key" @click="filter = method.key" class="bg-hogwarts-dark text-hogwarts-accent text-xl border-2 border-hogwarts-accent p-2">
                 <span>{{ method.name }}</span>
               </p>
@@ -54,14 +54,18 @@ const props = defineProps({
 
 const showExpelled = ref(false)
 const sorting = ref('firstName')
-const filter = ref('*')
+const filter = ref('all')
 const search = ref('')
 
 const showFilteringMethods = ref(false)
 const filteringMethods = ref([
   {
-    key: '*',
+    key: 'all',
     name: 'All Students'
+  },
+  {
+    key: 'current',
+    name: 'Current Students'
   },
   {
     key: 'expelled',
@@ -98,14 +102,22 @@ const sortingMethods = ref([
 ])
 
 const filteredStudents = computed(() => {
-  let filteredStudents = []
-  // Show either active or expelled students
-  filteredStudents = props.students.filter(student => student.expelled === showExpelled.value)
-  // Includes search query
+  // Deep clone students array
+  let filteredStudents = [ ...props.students ]
+
+  // Include search query in name
   filteredStudents = filteredStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
-  // Filters by chosen method
-  filteredStudents = filteredStudents.filter(student => student[filter.value] || filter.value === '*')
-  // Sorts by chosen method
+
+  // Filter by chosen method
+  if (filter.value === 'expelled') {
+    filteredStudents = filteredStudents.filter(student => student.expelled)
+  } else if (filter.value === 'current') {
+    filteredStudents = filteredStudents.filter(student => !student.expelled)
+  } else {
+    filteredStudents = filteredStudents.filter(student => student[filter.value] || filter.value === 'all')
+  }
+
+  // Sort by chosen method
   filteredStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
 
   return filteredStudents
