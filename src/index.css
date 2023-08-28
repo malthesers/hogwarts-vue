@@ -11,6 +11,10 @@
   }
 }
 
+input {
+  -webkit-appearance: none;
+}
+
 ::-webkit-scrollbar {
   width: 1rem;
 }

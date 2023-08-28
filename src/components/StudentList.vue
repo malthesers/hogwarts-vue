@@ -2,7 +2,7 @@
   <section class="p-4">
     <div class="mb-4">
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] sm:grid-cols-[5rem_1fr] mb-4">
-        <input v-model="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
+        <input @input="$emit('search', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
         <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center sm:row-start-1 sm:col-start-1">
       </div>
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] sm:grid-cols-[5rem_1fr] mb-4">
@@ -41,7 +41,7 @@
     </div>
     <div class="relative sm:p-4">
       <TransitionGroup name="student">
-        <StudentCard v-for="student in filteredStudents" :key="student" :student="student" />
+        <StudentCard v-for="student in students" :key="student" :student="student" />
       </TransitionGroup>
     </div>
   </section>
@@ -49,13 +49,11 @@
 
 <script setup>
 const props = defineProps({
-  students: Array
+  students: Array,
+  sorting: String,
+  filter: String,
+  search: String
 })
-
-const showExpelled = ref(false)
-const sorting = ref('firstName')
-const filter = ref('all')
-const search = ref('')
 
 const showFilteringMethods = ref(false)
 const filteringMethods = ref([
@@ -100,35 +98,9 @@ const sortingMethods = ref([
     name: 'House'
   }
 ])
-
-const filteredStudents = computed(() => {
-  // Deep clone students array
-  let filteredStudents = [ ...props.students ]
-
-  // Include search query in name
-  filteredStudents = filteredStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
-
-  // Filter by chosen method
-  if (filter.value === 'expelled') {
-    filteredStudents = filteredStudents.filter(student => student.expelled)
-  } else if (filter.value === 'current') {
-    filteredStudents = filteredStudents.filter(student => !student.expelled)
-  } else {
-    filteredStudents = filteredStudents.filter(student => student[filter.value] || filter.value === 'all')
-  }
-
-  // Sort by chosen method
-  filteredStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
-
-  return filteredStudents
-})
 </script>
 
 <style scoped>
-input {
-  -webkit-appearance: none;
-}
-
 .student-move,
 .student-enter-active,
 .student-leave-active {
