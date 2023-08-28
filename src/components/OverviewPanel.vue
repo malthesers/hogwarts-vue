@@ -27,14 +27,15 @@
         </div>
       </div>
       <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest" class="w-full">      
-      <h3 class="text-2xl mt-4 sm:mt-0 col-span-2 sm:col-span-1 sm:row-start-2 sm:row-end-2">Currently Displayed: {{ students.length }}</h3>
+      <h3 class="text-2xl mt-4 sm:mt-0 col-span-2 sm:col-span-1 sm:row-start-2 sm:row-end-2">Currently Displayed: {{ currentLength }}</h3>
     </div>
   </aside>
 </template>
 
 <script setup>
 const props = defineProps({
-  students: Array
+  students: Array,
+  currentLength: Number
 })
 const houses = ref(['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw'])
 

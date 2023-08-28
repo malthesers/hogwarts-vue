@@ -2,7 +2,7 @@
   <section class="p-4">
     <div class="mb-4">
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] sm:grid-cols-[5rem_1fr] mb-4">
-        <input @input="$emit('search', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
+        <input @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
         <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center sm:row-start-1 sm:col-start-1">
       </div>
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] sm:grid-cols-[5rem_1fr] mb-4">
@@ -13,7 +13,7 @@
           </p>
           <Transition name="slide">
             <div v-if="showFilteringMethods" class="max-h-72 overflow-hidden">
-              <p v-for="method in filteringMethods" :key="method.key" @click="filter = method.key, showFilteringMethods = false" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2">
+              <p v-for="method in filteringMethods" :key="method.key" @click="$emit('updateFilter', method.key), showFilteringMethods = false" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2">
                 <span>{{ method.name }}</span>
               </p>
             </div>
@@ -29,7 +29,7 @@
           </p>
           <Transition name="slide">
             <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
-              <p v-for="method in sortingMethods" :key="method.key" @click="sorting = method.key" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
+              <p v-for="method in sortingMethods" :key="method.key" @click="$emit('updateSorting', method.key)" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
                 <span>{{ method.name }}</span>
                 <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ sorting === method.key ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300">
               </p>

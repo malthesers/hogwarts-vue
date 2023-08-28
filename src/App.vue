@@ -1,8 +1,16 @@
 <template>
   <main class="min-h-screen bg-hogwarts-light text-hogwarts-accent font-merinda">
     <section class="max-w-6xl mx-auto grid sm:grid-cols-[13rem_auto]">
-        <OverviewPanel :students="students"/>
-        <StudentList @search="(value) => search = value" :students="filteredStudents" :sorting="sorting" :filter="filter" :search="search"/>
+        <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
+        <StudentList
+          @updateSearch="(value) => search = value"
+          @updateFilter="(value) => filter = value"
+          @updateSorting="(value) => sorting = value"
+          :students="displayedStudents"
+          :sorting="sorting"
+          :filter="filter"
+          :search="search"
+        />
     </section>
   </main>
 </template>
@@ -19,26 +27,28 @@ const sorting = ref('firstName')
 const filter = ref('all')
 const search = ref('')
 
-const filteredStudents = computed(() => {
+const displayedStudents = computed(() => {
   // Deep clone students array
-  let filteredStudents = [ ...students.value ]
+  let displayedStudents = [ ...students.value ]
+
+  console.log(sorting.value, filter.value, search.value)
 
   // Include search query in name
-  filteredStudents = filteredStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
+  displayedStudents = displayedStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
 
   // Filter by chosen method
   if (filter.value === 'expelled') {
-    filteredStudents = filteredStudents.filter(student => student.expelled)
+    displayedStudents = displayedStudents.filter(student => student.expelled)
   } else if (filter.value === 'current') {
-    filteredStudents = filteredStudents.filter(student => !student.expelled)
+    displayedStudents = displayedStudents.filter(student => !student.expelled)
   } else {
-    filteredStudents = filteredStudents.filter(student => student[filter.value] || filter.value === 'all')
+    displayedStudents = displayedStudents.filter(student => student[filter.value] || filter.value === 'all')
   }
 
   // Sort by chosen method
-  filteredStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
+  displayedStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
 
-  return filteredStudents
+  return displayedStudents
 })
 
 onMounted(() => {
