@@ -27,7 +27,12 @@
         </div>
       </div>
       <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest" class="w-full">      
-      <h3 class="text-2xl mt-4 sm:mt-0 col-span-2 sm:col-span-1 sm:row-start-2 sm:row-end-2">Currently Displayed: {{ currentLength }}</h3>
+      <h3 class="text-2xl mt-4 sm:mt-0 col-span-2 sm:col-span-1 sm:row-start-2 sm:row-end-2">
+        <span>Currently Displayed: </span>
+        <Transition name="fade" mode="out-in">
+          <span :key="currentLength" class="inline-block w-8 text-left">{{ currentLength }}</span>
+        </Transition>
+      </h3>
     </div>
   </aside>
 </template>
@@ -52,3 +57,15 @@ const studentsCount = computed(() => {
   }
 })
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 300ms ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
