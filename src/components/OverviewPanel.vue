@@ -49,6 +49,5 @@ const studentsCount = computed(() => {
     hufflepuff: props.students.filter(student => student.house === 'Hufflepuff'),
     ravenclaw: props.students.filter(student => student.house === 'Ravenclaw')
   }
-  
 })
 </script>
