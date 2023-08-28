@@ -54,7 +54,7 @@ const props = defineProps({
 
 const showExpelled = ref(false)
 const sorting = ref('firstName')
-const filter = ref('All Students')
+const filter = ref('*')
 const search = ref('')
 
 const showFilteringMethods = ref(false)
@@ -98,8 +98,10 @@ const filteredStudents = computed(() => {
   // Show either active or expelled students
   filteredStudents = props.students.filter(student => student.expelled === showExpelled.value)
   // Includes search query
-  filteredStudents = props.students.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
-  // Sorts by chosen sorting method
+  filteredStudents = filteredStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
+  // Filters by chosen method
+  filteredStudents = filteredStudents.filter(student => student[filter.value] || filter.value === '*')
+  // Sorts by chosen method
   filteredStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
 
   return filteredStudents
