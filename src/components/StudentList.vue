@@ -64,6 +64,10 @@ const filteringMethods = ref([
     name: 'All Students'
   },
   {
+    key: 'expelled',
+    name: 'Expelled Students'
+  },
+  {
     key: 'captain',
     name: 'Captains'
   },

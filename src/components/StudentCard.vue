@@ -16,7 +16,7 @@
       <div v-if="showDetails" class="relative max-h-80 text-xl overflow-hidden">
         <div class="mt-2 sm:flex sm:justify-between">
           <div class="text-base sm:text-xl flex flex-col justify-center gap-2 col-span-3 sm:col-span-2">
-            <p>Full name: {{ student.lastName }}, {{ student.firstName }}</p>
+            <p>Full name: {{ student.lastName }}, {{ student.firstName }} {{ student.middleName }} {{ student.nickName }}</p>
             <p>Blood status: {{ student.bloodStatus }}</p>
           </div>
           <div class="mt-4 sm:mt-0 flex gap-2 justify-between col-span-3 sm:col-span-1">
