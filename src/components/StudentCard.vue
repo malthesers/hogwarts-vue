@@ -34,14 +34,14 @@
         <!-- Button group -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 col-span-3 my-4">
           <!-- Prefect -->
-          <button @click="togglePrefect" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="togglePrefect" ref="prefectButton" @animationend="prefectButton.classList.remove('shake')" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Prefect</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.prefect">{{ student.prefect ? '-' : '+' }}</span>
             </Transition>
           </button>
           <!-- Inquisitor -->
-          <button @click="toggleInquisitor" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="toggleInquisitor" @animationend="inquisitorButton.classList.remove('shake')" ref="inquisitorButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Inquisitor</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.inquisitor">{{ student.inquisitor ? '-' : '+' }}</span>
@@ -63,6 +63,8 @@ const props = defineProps({
   students: Array
 })
 
+const prefectButton = ref(null)
+const inquisitorButton = ref(null)
 const showDetails = ref(false)
 
 const housePrefects = computed (() => {
@@ -70,13 +72,13 @@ const housePrefects = computed (() => {
 })
 
 function togglePrefect() {
-  console.log(housePrefects.value)
   if (props.student.prefect) {
-    // If already prefect, unprefect
     props.student.prefect = false
   } else if (housePrefects.value.length === 2) {
+    prefectButton.value.classList.add('shake')
     // TODO: display error message - 2 of house
   } else if (housePrefects.value.some(student => student.gender === props.student.gender)) {
+    prefectButton.value.classList.add('shake')
     // TODO: display error message - same gender
   } else {
     props.student.prefect = true
@@ -87,6 +89,7 @@ function toggleInquisitor() {
   if (props.student.bloodStatus === 'Full-blooded' || props.student.house === 'Slytherin') {
     props.student.inquisitor = !props.student.inquisitor
   } else {
+    inquisitorButton.value.classList.add('shake')
     // TODO: display error message - not full-blooded or slytherin
   }
 }
