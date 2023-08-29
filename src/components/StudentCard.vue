@@ -6,7 +6,7 @@
       <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 sm:w-1/4 m-auto opacity-20">
     </div>
     <!-- Student basic info -->
-    <div @click="showDetails = !showDetails" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
+    <div @click="showDetails = !showDetails, $emit('detailsExpanded')" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
       <div class="text-xl flex flex-col items-start justify-between my-2 sm:text-3xl sm:grid sm:grid-cols-3 sm:items-center">
         <p>{{ student.firstName }}</p>
@@ -58,9 +58,12 @@
 </template>
 
 <script setup>
+import { watch } from 'vue';
+
 const props = defineProps({
   student: Object,
-  students: Array
+  students: Array,
+  hideDetails: Boolean,
 })
 
 const prefectButton = ref(null)
@@ -93,6 +96,10 @@ function toggleInquisitor() {
     // TODO: display error message - not full-blooded or slytherin
   }
 }
+
+watch(() => props.hideDetails, (value) => {
+  if (value) showDetails.value = false
+})
 </script>
 
 <style scoped>

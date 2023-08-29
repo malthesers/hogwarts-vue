@@ -49,7 +49,14 @@
     <!-- List of students -->
     <div class="relative sm:p-4">
       <TransitionGroup name="student">
-        <StudentCard v-for="student in displayedStudents" :key="student" :student="student" :students="students"/>
+        <StudentCard
+          v-for="(student, index) in displayedStudents"
+          @detailsExpanded="expandedIndex = index"
+          :hideDetails="expandedIndex !== index"
+          :students="students"
+          :student="student"
+          :key="student"
+        />
       </TransitionGroup>
     </div>
   </section>
@@ -63,6 +70,8 @@ const props = defineProps({
   filter: String,
   search: String
 })
+
+const expandedIndex = ref()
 
 const showFilteringMethods = ref(false)
 const filteringMethods = ref({
