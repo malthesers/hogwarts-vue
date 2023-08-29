@@ -29,9 +29,9 @@
           </p>
           <Transition name="slide">
             <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
-              <p v-for="method in sortingMethods" :key="method.key" @click="$emit('updateSorting', method.key)" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
-                <span>{{ method.name }}</span>
-                <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ sorting === method.key ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300">
+              <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
+                <span>{{ name }}</span>
+                <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ sorting === method ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300">
               </p>
             </div>
           </Transition>
@@ -66,20 +66,11 @@ const filteringMethods = ref({
 })
 
 const showSortingMethods = ref(false)
-const sortingMethods = ref([
-  {
-    key: 'firstName',
-    name: 'First name'
-  },
-  {
-    key: 'lastName',
-    name: 'Last name'
-  },
-  {
-    key: 'house',
-    name: 'House'
-  }
-])
+const sortingMethods = ref({
+  firstName: 'First name',
+  lastName: 'Last name',
+  house: 'House'
+})
 </script>
 
 <style scoped>
