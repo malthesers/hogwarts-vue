@@ -48,7 +48,7 @@
             </Transition>
           </button>
           <!-- Expel -->
-          <button class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 sm:col-span-1">
+          <button @click="student.expelled = true" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 sm:col-span-1">
             <p>Expel Student</p>
           </button>
         </div>
