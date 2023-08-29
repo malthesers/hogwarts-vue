@@ -41,7 +41,7 @@
             </Transition>
           </button>
           <!-- Inquisitor -->
-          <button @click="student.inquisitor = !student.inquisitor" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="toggleInquisitor" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Inquisitor</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.inquisitor">{{ student.inquisitor ? '-' : '+' }}</span>
@@ -63,6 +63,14 @@ const props = defineProps({
 })
 
 const showDetails = ref(false)
+
+function toggleInquisitor() {
+  if (props.student.bloodStatus === 'Full-blooded' || props.student.house === 'Slytherin') {
+    props.student.inquisitor = !props.student.inquisitor
+  } else {
+    // TODO: display error message
+  }
+}
 </script>
 
 <style scoped>
