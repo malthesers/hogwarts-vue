@@ -6,7 +6,8 @@
           @updateSearch="(value) => search = value"
           @updateFilter="(value) => filter = value"
           @updateSorting="(value) => sorting = value"
-          :students="displayedStudents"
+          :displayedStudents="displayedStudents"
+          :students="students"
           :sorting="sorting"
           :filter="filter"
           :search="search"
@@ -30,8 +31,6 @@ const search = ref('')
 const displayedStudents = computed(() => {
   // Deep clone students array
   let displayedStudents = [ ...students.value ]
-
-  console.log(sorting.value, filter.value, search.value)
 
   // Include search query in name
   displayedStudents = displayedStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')

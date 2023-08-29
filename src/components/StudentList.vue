@@ -49,7 +49,7 @@
     <!-- List of students -->
     <div class="relative sm:p-4">
       <TransitionGroup name="student">
-        <StudentCard v-for="student in students" :key="student" :student="student" />
+        <StudentCard v-for="student in displayedStudents" :key="student" :student="student" :students="students"/>
       </TransitionGroup>
     </div>
   </section>
@@ -57,6 +57,7 @@
 
 <script setup>
 const props = defineProps({
+  displayedStudents: Array,
   students: Array,
   sorting: String,
   filter: String,

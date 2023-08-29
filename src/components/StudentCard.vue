@@ -34,7 +34,7 @@
         <!-- Button group -->
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 col-span-3 my-4">
           <!-- Prefect -->
-          <button @click="student.prefect = !student.prefect" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="togglePrefect" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Prefect</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.prefect">{{ student.prefect ? '-' : '+' }}</span>
@@ -59,16 +59,35 @@
 
 <script setup>
 const props = defineProps({
-  student: Object
+  student: Object,
+  students: Array
 })
 
 const showDetails = ref(false)
+
+const housePrefects = computed (() => {
+  return props.students.filter(student => student.prefect && student.house === props.student.house)
+})
+
+function togglePrefect() {
+  console.log(housePrefects.value)
+  if (props.student.prefect) {
+    // If already prefect, unprefect
+    props.student.prefect = false
+  } else if (housePrefects.value.length === 2) {
+    // TODO: display error message - 2 of house
+  } else if (housePrefects.value.some(student => student.gender === props.student.gender)) {
+    // TODO: display error message - same gender
+  } else {
+    props.student.prefect = true
+  }
+}
 
 function toggleInquisitor() {
   if (props.student.bloodStatus === 'Full-blooded' || props.student.house === 'Slytherin') {
     props.student.inquisitor = !props.student.inquisitor
   } else {
-    // TODO: display error message
+    // TODO: display error message - not full-blooded or slytherin
   }
 }
 </script>
