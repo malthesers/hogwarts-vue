@@ -13,8 +13,8 @@
           </p>
           <Transition name="slide">
             <div v-if="showFilteringMethods" class="max-h-72 overflow-hidden">
-              <p v-for="method in filteringMethods" :key="method.key" @click="$emit('updateFilter', method.key), showFilteringMethods = false" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2">
-                <span>{{ method.name }}</span>
+              <p v-for="(name, method) in filteringMethods" :key="method" @click="$emit('updateFilter', method), showFilteringMethods = false" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2">
+                <span>{{ name }}</span>
               </p>
             </div>
           </Transition>
@@ -56,32 +56,14 @@ const props = defineProps({
 })
 
 const showFilteringMethods = ref(false)
-const filteringMethods = ref([
-  {
-    key: 'all',
-    name: 'All Students'
-  },
-  {
-    key: 'current',
-    name: 'Current Students'
-  },
-  {
-    key: 'expelled',
-    name: 'Expelled Students'
-  },
-  {
-    key: 'captain',
-    name: 'Captains'
-  },
-  {
-    key: 'prefect',
-    name: 'Prefects'
-  },
-  {
-    key: 'inquisitor',
-    name: 'Inquisitors'
-  },
-])
+const filteringMethods = ref({
+  all: 'All Students',
+  current: 'Current Students',
+  expelled: 'Expelled Students',
+  captain: 'Captains',
+  prefect: 'Prefects',
+  inquisitor: 'Inquisitors'
+})
 
 const showSortingMethods = ref(false)
 const sortingMethods = ref([
