@@ -8,7 +8,7 @@
     <!-- Student basic info -->
     <div @click="showDetails = !showDetails, $emit('detailsExpanded')" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
-      <div class="text-xl flex flex-col items-start justify-between my-2 lg:text-3xl lg:grid lg:grid-cols-3 lg:items-center">
+      <div class="text-xl flex flex-col items-start justify-between my-2 md:text-3xl sm:grid sm:grid-cols-3 sm:items-center">
         <p>{{ student.firstName }}</p>
         <p>{{ student.lastName }}</p>
         <p>{{ student.house }}</p>
@@ -17,18 +17,18 @@
     <!-- Student detailed info -->
     <Transition name="slide">
       <div v-if="showDetails" class="relative max-h-80 text-xl overflow-hidden">
-        <div class="mt-2 lg:flex lg:justify-between">
+        <div class="mt-2 md:flex md:justify-between">
           <!-- Name and blood status -->
-          <div class="text-base lg:text-xl flex flex-col justify-center gap-2 col-span-3 lg:col-span-2">
+          <div class="text-base md:text-xl flex flex-col justify-center gap-2 col-span-3 lg:col-span-2">
             <p>Full name: {{ student.lastName ? `${student.lastName}, ` : '' }}{{ student.firstName }} {{ student.middleName }} {{ student.nickName }}</p>
             <p>Blood status: {{ student.bloodStatus }}</p>
           </div>
           <!-- Badge case -->
-          <div class="mt-4 lg:mt-0 flex gap-2 justify-between col-span-3 lg:col-span-1">
-            <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
-            <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
-            <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
-            <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
+          <div class="mt-4 md:mt-0 flex gap-2 justify-between col-span-3 lg:col-span-1">
+            <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
+            <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
+            <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
+            <img src="images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
           </div>
         </div>
         <!-- Button group -->
