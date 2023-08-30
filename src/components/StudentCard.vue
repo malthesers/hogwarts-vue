@@ -16,7 +16,7 @@
     </div>
     <!-- Student detailed info -->
     <Transition name="slide">
-      <div v-if="showDetails" class="relative max-h-80 text-xl overflow-hidden">
+      <div v-if="showDetails" class="relative max-h-96 text-xl overflow-hidden">
         <div class="mt-2 md:flex md:justify-between">
           <!-- Name and blood status -->
           <div class="text-base md:text-xl flex flex-col justify-center gap-2 col-span-3 lg:col-span-2">
@@ -41,16 +41,16 @@
             </Transition>
           </button>
           <!-- Inquisitor -->
-          <button @click="toggleInquisitor" @animationend="inquisitorButton.classList.remove('shake')" ref="inquisitorButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="toggleInquisitor" ref="inquisitorButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Inquisitor</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.inquisitor">{{ student.inquisitor ? '-' : '+' }}</span>
             </Transition>
           </button>
           <!-- Expel -->
-          <button @click="student.expelled = true" @animationend="expelledButton.classList.remove('shake')" ref="expelledButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
+          <button @click="expelStudent" @animationend="inquisitorButton.classList.remove('shake')" ref="expelledButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
             <p>Expel Student</p>
-            <img src="../assets/icons/howler.svg" alt="howler expulsion icon" class="absolute w-20 rotate-[10deg] right-[3%] top-1/2 -translate-y-1/2">
+            <img @animationend="student.expelled = true" ref="howler" src="../assets/icons/howler.svg" alt="howler expulsion icon" class="absolute w-20 rotate-[10deg] top-[-7%] right-[3%]">
           </button>
         </div>
       </div>
@@ -67,6 +67,7 @@ const props = defineProps({
   hideDetails: Boolean,
 })
 
+const howler = ref(null)
 const prefectButton = ref(null)
 const inquisitorButton = ref(null)
 const showDetails = ref(false)
@@ -96,6 +97,10 @@ function toggleInquisitor() {
     inquisitorButton.value.classList.add('shake')
     // TODO: display error message - not full-blooded or slytherin
   }
+}
+
+function expelStudent() {
+  howler.value.classList.add('howler')
 }
 
 watch(() => props.hideDetails, (value) => {
