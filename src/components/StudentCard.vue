@@ -49,8 +49,10 @@
           </button>
           <!-- Expel -->
           <button @click="expelStudent" @animationend="inquisitorButton.classList.remove('shake')" ref="expelledButton" :disabled="student.expelled" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
-            <p>Expel Student</p>
-            <img @animationend="student.expelled = true" ref="howler" src="../assets/icons/howler.svg" alt="howler expulsion icon" class="absolute w-20 rotate-[10deg] top-[-7%] right-[3%]">
+            <Transition name="fade" mode="out-in">
+              <p :key="student.expelled">{{ student.expelled ? 'Expelled' : 'Expel Student' }}</p>
+            </Transition>
+            <img v-if="!student.expelled" @animationend="student.expelled = true" ref="howler" src="../assets/icons/howler.svg" alt="howler expulsion icon" class="absolute w-20 rotate-[10deg] top-[-7%] right-[3%]">
           </button>
         </div>
       </div>
