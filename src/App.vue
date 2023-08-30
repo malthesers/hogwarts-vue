@@ -1,6 +1,6 @@
 <template>
   <main class="min-h-screen bg-hogwarts-light text-hogwarts-accent font-merinda">
-    <section class="max-w-6xl mx-auto grid sm:grid-cols-[13rem_auto]">
+    <section class="max-w-6xl mx-auto grid md:grid-cols-[13rem_auto]">
         <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
         <StudentList
           @updateSearch="(value) => search = value"
