@@ -48,8 +48,9 @@
             </Transition>
           </button>
           <!-- Expel -->
-          <button @click="student.expelled = true" @animationend="expelledButton.classList.remove('shake')" ref="expelledButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between sm:col-span-2 md:col-span-1">
+          <button @click="student.expelled = true" @animationend="expelledButton.classList.remove('shake')" ref="expelledButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
             <p>Expel Student</p>
+            <img src="../assets/icons/howler.svg" alt="howler expulsion icon" class="absolute w-20 rotate-[10deg] right-[3%] top-1/2 -translate-y-1/2">
           </button>
         </div>
       </div>

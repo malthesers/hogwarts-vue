@@ -9,6 +9,7 @@ module.exports = {
       "hogwarts-accent": "#FAECBF",
       "hogwarts-light": "#392A48",
       "hogwarts-dark": "#2F223A",
+      "howler-accent": "#3A3120",
     },
     extend: {},
   },
