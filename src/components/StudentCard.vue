@@ -32,23 +32,23 @@
           </div>
         </div>
         <!-- Button group -->
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-2 my-4">
+        <div :class="{ 'opacity-30' : student.expelled }" class="grid sm:grid-cols-2 md:grid-cols-3 gap-2 my-4 duration-200">
           <!-- Prefect -->
-          <button @click="togglePrefect" ref="prefectButton" @animationend="prefectButton.classList.remove('shake')" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="togglePrefect" ref="prefectButton" :disabled="student.expelled" @animationend="prefectButton.classList.remove('shake')" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Prefect</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.prefect">{{ student.prefect ? '-' : '+' }}</span>
             </Transition>
           </button>
           <!-- Inquisitor -->
-          <button @click="toggleInquisitor" ref="inquisitorButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
+          <button @click="toggleInquisitor" ref="inquisitorButton" :disabled="student.expelled" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Inquisitor</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.inquisitor">{{ student.inquisitor ? '-' : '+' }}</span>
             </Transition>
           </button>
           <!-- Expel -->
-          <button @click="expelStudent" @animationend="inquisitorButton.classList.remove('shake')" ref="expelledButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
+          <button @click="expelStudent" @animationend="inquisitorButton.classList.remove('shake')" ref="expelledButton" :disabled="student.expelled" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
             <p>Expel Student</p>
             <img @animationend="student.expelled = true" ref="howler" src="../assets/icons/howler.svg" alt="howler expulsion icon" class="absolute w-20 rotate-[10deg] top-[-7%] right-[3%]">
           </button>
