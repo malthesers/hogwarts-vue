@@ -3,12 +3,12 @@
     <!-- <div :style="{ backgroundImage: `url(/images/crests/${student.house.toLowerCase()}-crest.svg)`}" class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-top bg-[length:18rem]"></div> -->
     <!-- Background crest -->
     <div class="absolute top-0 left-0 p-4 grid w-full h-full">
-      <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 md:w-1/4 m-auto opacity-20">
+      <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 lg:w-1/4 m-auto opacity-20">
     </div>
     <!-- Student basic info -->
     <div @click="showDetails = !showDetails, $emit('detailsExpanded')" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
-      <div class="text-xl flex flex-col items-start justify-between my-2 md:text-3xl md:grid md:grid-cols-3 md:items-center">
+      <div class="text-xl flex flex-col items-start justify-between my-2 lg:text-3xl lg:grid lg:grid-cols-3 lg:items-center">
         <p>{{ student.firstName }}</p>
         <p>{{ student.lastName }}</p>
         <p>{{ student.house }}</p>
@@ -17,14 +17,14 @@
     <!-- Student detailed info -->
     <Transition name="slide">
       <div v-if="showDetails" class="relative max-h-80 text-xl overflow-hidden">
-        <div class="mt-2 md:flex md:justify-between">
+        <div class="mt-2 lg:flex lg:justify-between">
           <!-- Name and blood status -->
-          <div class="text-base md:text-xl flex flex-col justify-center gap-2 col-span-3 md:col-span-2">
+          <div class="text-base lg:text-xl flex flex-col justify-center gap-2 col-span-3 lg:col-span-2">
             <p>Full name: {{ student.lastName ? `${student.lastName}, ` : '' }}{{ student.firstName }} {{ student.middleName }} {{ student.nickName }}</p>
             <p>Blood status: {{ student.bloodStatus }}</p>
           </div>
           <!-- Badge case -->
-          <div class="mt-4 md:mt-0 flex gap-2 justify-between col-span-3 md:col-span-1">
+          <div class="mt-4 lg:mt-0 flex gap-2 justify-between col-span-3 lg:col-span-1">
             <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
             <img src="images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
             <img src="images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-20 duration-300">
@@ -32,7 +32,7 @@
           </div>
         </div>
         <!-- Button group -->
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 col-span-3 my-4">
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 col-span-3 my-4">
           <!-- Prefect -->
           <button @click="togglePrefect" ref="prefectButton" @animationend="prefectButton.classList.remove('shake')" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Prefect</p>
@@ -48,7 +48,7 @@
             </Transition>
           </button>
           <!-- Expel -->
-          <button @click="student.expelled = true" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 md:col-span-1">
+          <button @click="student.expelled = true" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 lg:col-span-1">
             <p>Expel Student</p>
           </button>
         </div>

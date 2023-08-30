@@ -2,12 +2,12 @@
   <section class="p-4">
     <div class="mb-4">
       <!-- Searching -->
-      <div class="text-xl grid gap-2 grid-cols-[auto_3rem] md:grid-cols-[5rem_1fr] mb-4">
+      <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
         <input @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
-        <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center md:row-start-1 md:col-start-1">
+        <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
       </div>
       <!-- Filtering -->
-      <div class="text-xl grid gap-2 grid-cols-[auto_3rem] md:grid-cols-[5rem_1fr] mb-4">
+      <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
         <div class="cursor-pointer">
           <!-- Filtering header -->
           <p @click="showFilteringMethods = !showFilteringMethods" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
@@ -23,10 +23,10 @@
             </div>
           </Transition>
         </div>
-        <img src="../assets/icons/badge.svg" alt="magnifying wand" class="h-12 place-self-center md:row-start-1 md:col-start-1">
+        <img src="../assets/icons/badge.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
       </div>
       <!-- Sorting -->
-      <div class="text-xl grid gap-2 grid-cols-[auto_3rem] md:grid-cols-[5rem_1fr]">
+      <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr]">
         <div class="cursor-pointer">
           <!-- Sorting header -->
           <p @click="showSortingMethods = !showSortingMethods" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
@@ -43,11 +43,11 @@
             </div>
           </Transition>
         </div>
-        <img src="../assets/icons/sorting-hat.svg" alt="magnifying wand" class="h-12 place-self-center md:row-start-1 md:col-start-1">
+        <img src="../assets/icons/sorting-hat.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
       </div>
     </div>
     <!-- List of students -->
-    <div class="relative md:p-4">
+    <div class="relative lg:p-4">
       <TransitionGroup name="student">
         <StudentCard
           v-for="(student, index) in displayedStudents"
