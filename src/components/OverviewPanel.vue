@@ -29,8 +29,8 @@
           </div>
         </div>
       </div>
-      <!-- Crest and current display -->
-      <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest" class="w-full">      
+      <!-- Hogwarts crest and current display -->
+      <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest" class="w-full max-w-[12rem]">      
       <h3 class="text-2xl mt-4 md:mt-0 col-span-2 md:col-span-1 md:row-start-2 md:row-end-2">
         <span>Currently Displayed: </span>
         <Transition name="fade" mode="out-in">
