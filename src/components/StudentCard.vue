@@ -32,7 +32,7 @@
           </div>
         </div>
         <!-- Button group -->
-        <div class="grid grid-cols-2 lg:grid-cols-3 gap-2 col-span-3 my-4">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 my-4">
           <!-- Prefect -->
           <button @click="togglePrefect" ref="prefectButton" @animationend="prefectButton.classList.remove('shake')" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between">
             <p>Prefect</p>
@@ -48,7 +48,7 @@
             </Transition>
           </button>
           <!-- Expel -->
-          <button @click="student.expelled = true" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 col-span-2 lg:col-span-1">
+          <button @click="student.expelled = true" @animationend="expelledButton.classList.remove('shake')" ref="expelledButton" class="bg-hogwarts-accent text-hogwarts-dark border-hogwarts-dark border-2 p-2 flex justify-between sm:col-span-2 lg:col-span-1">
             <p>Expel Student</p>
           </button>
         </div>
