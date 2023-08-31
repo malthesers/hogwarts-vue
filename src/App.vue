@@ -4,7 +4,7 @@
         <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
         <StudentList
           @hackTheSystem="hackTheSystem"
-          @curseHogwarts="isCursed = true, search = ' '"
+          @curseHogwarts="isCursed = true, filter = 'current'"
           @updateSearch="(value) => search = value"
           @updateFilter="(value) => filter = value"
           @updateSorting="(value) => sorting = value"
