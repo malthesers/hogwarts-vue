@@ -52,8 +52,10 @@
         <StudentCard
           v-for="(student, index) in displayedStudents"
           @detailsExpanded="expandedIndex = index"
+          @curseHogwarts="emits('curseHogwarts')"
           :hideDetails="expandedIndex !== index"
           :isHacked="isHacked"
+          :isCursed="isCursed"
           :students="students"
           :student="student"
           :key="student"
@@ -68,11 +70,12 @@ const props = defineProps({
   displayedStudents: Array,
   students: Array,
   isHacked: Boolean,
+  isCursed: Boolean,
   sorting: String,
   filter: String,
   search: String
 })
-const emits = defineEmits(['hackTheSystem', 'updateSearch', 'updateFilter', 'updateSorting'])
+const emits = defineEmits(['hackTheSystem', 'curseHogwarts', 'updateSearch', 'updateFilter', 'updateSorting'])
 
 const expandedIndex = ref()
 

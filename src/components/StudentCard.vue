@@ -64,10 +64,11 @@
 const props = defineProps({
   hideDetails: Boolean,
   isHacked: Boolean,
+  isCursed: Boolean,
   students: Array,
   student: Object,
 })
-const emits = defineEmits(['detailsExpanded'])
+const emits = defineEmits(['detailsExpanded', 'curseHogwarts'])
 
 const showDetails = ref(false)
 
@@ -75,6 +76,8 @@ const howler = ref(null)
 const prefectButton = ref(null)
 const inquisitorButton = ref(null)
 const expelledButton = ref(null)
+
+const expulsionAttempts = ref(0)
 
 const housePrefects = computed (() => {
   return props.students.filter(student => student.prefect && student.house === props.student.house)
@@ -113,8 +116,19 @@ function toggleInquisitor() {
 
 function expelStudent() {
   if (props.student.firstName === 'Malthe') {
+    // Increment expulsion attempts
+    expulsionAttempts.value++
+
     expelledButton.value.classList.add('shake')
-    // TODO: display erorr message - 1, 2, 3 messages for expulsion attempts
+
+    if (expulsionAttempts.value === 1) {
+      // TODO: display erorr message - first attempt
+    } else if (expulsionAttempts.value === 2) {
+      // TODO: display erorr message - second attempt
+    } else if (expulsionAttempts.value === 3) {
+      emits('curseHogwarts')
+      // TODO: display erorr message - third attempt
+    }
   } else {
     howler.value.classList.add('howler')
   }
@@ -127,8 +141,8 @@ watch(() => props.hideDetails, (value) => {
 watch(showDetails, () => {
   setTimeout(() => {
     // Curse Hogwarts if hacked
-    if (props.isHacked) {
-      document.querySelectorAll('p, button, img').forEach(element => {
+    if (props.isCursed) {
+      document.querySelectorAll('p, img').forEach(element => {
         element.addEventListener("click", (e) => {
           e.target.classList += ' duration-200'
           e.target.style.filter = "grayscale(75%)"

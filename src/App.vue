@@ -4,12 +4,14 @@
         <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
         <StudentList
           @hackTheSystem="hackTheSystem"
+          @curseHogwarts="isCursed = true, search = ' '"
           @updateSearch="(value) => search = value"
           @updateFilter="(value) => filter = value"
           @updateSorting="(value) => sorting = value"
           :displayedStudents="displayedStudents"
           :students="students"
           :isHacked="isHacked"
+          :isCursed="isCursed"
           :sorting="sorting"
           :filter="filter"
           :search="search"
@@ -25,6 +27,7 @@ import formatStudent from './composables/reformatting.js'
 import getMyself from './composables/hacking.js'
 
 const isHacked = ref(false)
+const isCursed = ref(false)
 
 const familyNames = ref({...families})
 const students = ref([])
@@ -88,8 +91,8 @@ function hackTheSystem() {
 watch(displayedStudents, () => {
   setTimeout(() => {
     // Curse Hogwarts if hacked
-    if (isHacked.value) {
-      document.querySelectorAll('p, button, input, img').forEach(element => {
+    if (isCursed.value) {
+      document.querySelectorAll('p, input, img').forEach(element => {
         element.addEventListener("click", (e) => {
           e.target.classList += ' duration-200'
           e.target.style.filter = "grayscale(75%)"
