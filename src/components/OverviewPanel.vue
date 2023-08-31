@@ -3,11 +3,11 @@
     <div class="lg:fixed w-full lg:max-w-[13rem] grid grid-cols-2 lg:grid-cols-1 lg:gap-4 p-4 text-center">
       <div class="flex flex-col justify-center">
         <div>
-          <h1 class="text-3xl lg:text-4xl mb-2">Hogwarts</h1>
-          <h2 class="text-xl lg:text-2xl mb-2">Class of 1991</h2>
+          <p class="text-3xl lg:text-4xl mb-2">Hogwarts</p>
+          <p class="text-xl lg:text-2xl mb-2">Class of 1991</p>
         </div>
         <div>
-          <h2 class="text-lg lg:text-xl mb-2">Students</h2>
+          <p class="text-lg lg:text-xl mb-2">Students</p>
           <div class="flex justify-center gap-2 mb-2">
             <!-- Total count -->
             <span class="w-8 h-8 inline-grid place-content-center">
@@ -31,12 +31,12 @@
       </div>
       <!-- Hogwarts crest and current display -->
       <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest" class="w-full max-w-[12rem]">      
-      <h3 class="text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
+      <p class="text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
         <span>Currently Displayed: </span>
         <Transition name="fade" mode="out-in">
           <span :key="currentLength" class="inline-block w-8 text-left">{{ currentLength }}</span>
         </Transition>
-      </h3>
+      </p>
     </div>
   </aside>
 </template>
