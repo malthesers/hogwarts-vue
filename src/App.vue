@@ -21,13 +21,16 @@
 import studentsData from './assets/students.json'
 import families from './assets/families.json'
 import formatStudent from './composables/reformatting.js'
+import getMyself from './composables/hacking.js'
+
+const systemIsHacked = ref(false)
 
 const familyNames = ref({...families})
 const students = ref([])
 
-const sorting = ref('firstName')
-const filter = ref('all')
 const search = ref('')
+const filter = ref('all')
+const sorting = ref('firstName')
 
 const displayedStudents = computed(() => {
   // Deep clone students array
@@ -52,7 +55,26 @@ const displayedStudents = computed(() => {
 })
 
 function hackTheSystem() {
-  console.log('hackerman')
+  if (!systemIsHacked.value) {
+    systemIsHacked.value = true
+
+    // Reset student display settings
+    search.value = ""
+    filter.value = "all"
+    sorting.value = "firstName"
+
+    // TODO: reset house theme
+    // TODO: open crest animation
+    // TODO: display imperio mist on crest
+
+    injectSelf()
+  }
+}
+
+function injectSelf() {
+  const me = getMyself()
+
+  students.value.push(me)
 }
 
 onMounted(() => {
