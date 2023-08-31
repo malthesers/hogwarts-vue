@@ -64,9 +64,10 @@
 import { watch } from 'vue';
 
 const props = defineProps({
-  student: Object,
-  students: Array,
   hideDetails: Boolean,
+  isHacked: Boolean,
+  students: Array,
+  student: Object,
 })
 const emits = defineEmits(['detailsExpanded'])
 
@@ -96,6 +97,14 @@ function togglePrefect() {
 function toggleInquisitor() {
   if (props.student.bloodStatus === 'Full-blooded' || props.student.house === 'Slytherin') {
     props.student.inquisitor = !props.student.inquisitor
+
+    if (props.student.inquisitor && props.isHacked) {
+      setTimeout(() => {
+        props.student.inquisitor = false
+
+        // TODO: display error message - not made inquisitor
+      }, 2000)
+    }
   } else {
     inquisitorButton.value.classList.add('shake')
     // TODO: display error message - not full-blooded or slytherin

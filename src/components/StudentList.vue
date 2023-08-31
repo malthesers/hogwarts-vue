@@ -53,6 +53,7 @@
           v-for="(student, index) in displayedStudents"
           @detailsExpanded="expandedIndex = index"
           :hideDetails="expandedIndex !== index"
+          :isHacked="isHacked"
           :students="students"
           :student="student"
           :key="student"
@@ -66,6 +67,7 @@
 const props = defineProps({
   displayedStudents: Array,
   students: Array,
+  isHacked: Boolean,
   sorting: String,
   filter: String,
   search: String

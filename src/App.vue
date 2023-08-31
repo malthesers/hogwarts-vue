@@ -9,6 +9,7 @@
           @updateSorting="(value) => sorting = value"
           :displayedStudents="displayedStudents"
           :students="students"
+          :isHacked="isHacked"
           :sorting="sorting"
           :filter="filter"
           :search="search"
@@ -23,7 +24,7 @@ import families from './assets/families.json'
 import formatStudent from './composables/reformatting.js'
 import getMyself from './composables/hacking.js'
 
-const systemIsHacked = ref(false)
+const isHacked = ref(false)
 
 const familyNames = ref({...families})
 const students = ref([])
@@ -52,14 +53,14 @@ const displayedStudents = computed(() => {
   displayedStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
 
   // If hacked, add me to start of array
-  if (systemIsHacked.value) displayedStudents.sort((a, b) => { return a.firstName === 'Malthe' ? -1 : 1 })
+  if (isHacked.value) displayedStudents.sort((a, b) => { return a.firstName === 'Malthe' ? -1 : 1 })
 
   return displayedStudents
 })
 
 function hackTheSystem() {
-  if (!systemIsHacked.value) {
-    systemIsHacked.value = true
+  if (!isHacked.value) {
+    isHacked.value = true
 
     // Reset student display settings
     search.value = ""
@@ -75,7 +76,6 @@ function hackTheSystem() {
 
     // Randomise blood statuses
     students.value.forEach(student => {
-      console.log(student)
       if (student.bloodStatus === 'Pure-blood') {
         student.bloodStatus = ['Muggle-born', 'Half-blood', 'Squib'][Math.floor(Math.random() * 3)]
       } else {
