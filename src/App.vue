@@ -72,6 +72,16 @@ function hackTheSystem() {
 
     // Inject myself into students
     students.value.push(getMyself())
+
+    // Randomise blood statuses
+    students.value.forEach(student => {
+      console.log(student)
+      if (student.bloodStatus === 'Pure-blood') {
+        student.bloodStatus = ['Muggle-born', 'Half-blood', 'Squib'][Math.floor(Math.random() * 3)]
+      } else {
+        student.bloodStatus = 'Pure-blood'
+      }
+    })
   }
 }
 
