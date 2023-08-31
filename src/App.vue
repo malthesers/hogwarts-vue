@@ -3,6 +3,7 @@
     <section class="max-w-6xl mx-auto grid lg:grid-cols-[13rem_auto]">
         <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
         <StudentList
+          @hackTheSystem="hackTheSystem"
           @updateSearch="(value) => search = value"
           @updateFilter="(value) => filter = value"
           @updateSorting="(value) => sorting = value"
@@ -49,6 +50,10 @@ const displayedStudents = computed(() => {
 
   return displayedStudents
 })
+
+function hackTheSystem() {
+  console.log('hackerman')
+}
 
 onMounted(() => {
   studentsData.forEach((student) => {

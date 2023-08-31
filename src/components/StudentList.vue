@@ -3,7 +3,7 @@
     <div class="mb-4">
       <!-- Searching -->
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
-        <input @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
+        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
         <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
       </div>
       <!-- Filtering -->
@@ -70,6 +70,7 @@ const props = defineProps({
   filter: String,
   search: String
 })
+const emits = defineEmits(['hackTheSystem', 'updateSearch', 'updateFilter', 'updateSorting'])
 
 const expandedIndex = ref()
 
@@ -89,6 +90,10 @@ const sortingMethods = ref({
   lastName: 'Last name',
   house: 'House'
 })
+
+function verifyHacking() {
+  if (props.search === "imperio") emits('hackTheSystem')
+}
 </script>
 
 <style scoped>
