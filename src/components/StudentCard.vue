@@ -68,6 +68,7 @@ const props = defineProps({
   students: Array,
   hideDetails: Boolean,
 })
+const emits = defineEmits(['detailsExpanded'])
 
 const howler = ref(null)
 const prefectButton = ref(null)
