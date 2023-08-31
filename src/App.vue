@@ -51,6 +51,9 @@ const displayedStudents = computed(() => {
   // Sort by chosen method
   displayedStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
 
+  // If hacked, add me to start of array
+  if (systemIsHacked.value) displayedStudents.sort((a, b) => { return a.firstName === 'Malthe' ? -1 : 1 })
+
   return displayedStudents
 })
 
@@ -67,14 +70,9 @@ function hackTheSystem() {
     // TODO: open crest animation
     // TODO: display imperio mist on crest
 
-    injectSelf()
+    // Inject myself into students
+    students.value.push(getMyself())
   }
-}
-
-function injectSelf() {
-  const me = getMyself()
-
-  students.value.push(me)
 }
 
 onMounted(() => {
