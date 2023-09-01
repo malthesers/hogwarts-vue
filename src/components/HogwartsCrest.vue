@@ -18,7 +18,7 @@
       <img @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" ref="hufflepuffMascot" class="hogwarts-crest-hufflepuff-head" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-head.svg">
       <img @mouseenter="animateRavenclaw" @mouseleave="unanimateRavenclaw" ref="ravenclawMascot" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
       <!-- Hogwarts insignia -->
-      <img class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
+      <img @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" ref="insignia" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
     </div>
   </footer>
 </template>
@@ -32,6 +32,7 @@ const gryffindorMascot = ref(null)
 const slytherinMascot = ref(null)
 const hufflepuffMascot = ref(null)
 const ravenclawMascot = ref(null)
+const insignia = ref(null)
 
 function animateGryffindor() {
   addHighlight('gryffindor')
@@ -42,6 +43,7 @@ function unanimateGryffindor() {
   removeHightlights()
   gryffindorMascot.value.classList.remove('animate')
 }
+
 function animateSlytherin() {
   addHighlight('slytherin')
   slytherinMascot.value.classList.add('animate')
@@ -51,6 +53,7 @@ function unanimateSlytherin() {
   removeHightlights()
   slytherinMascot.value.classList.remove('animate')
 }
+
 function animateHufflepuff() {
   addHighlight('hufflepuff')
   hufflepuffMascot.value.classList.add('animate')
@@ -60,6 +63,7 @@ function unanimateHufflepuff() {
   removeHightlights()
   hufflepuffMascot.value.classList.remove('animate')
 }
+
 function animateRavenclaw() {
   addHighlight('ravenclaw')
   ravenclawMascot.value.classList.add('animate')
@@ -68,6 +72,16 @@ function animateRavenclaw() {
 function unanimateRavenclaw() {
   removeHightlights()
   ravenclawMascot.value.classList.remove('animate')
+}
+
+function animateInsignia() {
+  addHighlight('')
+  insignia.value.classList.add('animate')
+}
+
+function unanimateInsignia() {
+  removeHightlights()
+  insignia.value.classList.remove('animate')
 }
 
 function addHighlight(house) {
