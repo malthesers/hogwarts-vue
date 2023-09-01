@@ -102,36 +102,35 @@ function removeHightlights() {
 
 onMounted(() => {
   const interval = 400
-
   // Animate the houses clockwise - Gryffindor
   setTimeout(() => {
-    animateGryffindor();
-  }, interval * 1);
+    animateGryffindor()
+  }, interval * 1)
   // Animate the houses clockwise - Slytherin
   setTimeout(() => {
-    unanimateGryffindor();
-    animateSlytherin();
-  }, interval * 2);
+    unanimateGryffindor()
+    animateSlytherin()
+  }, interval * 2)
   // Animate the houses clockwise - Ravenclaw
   setTimeout(() => {
-    unanimateSlytherin();
-    animateRavenclaw();
+    unanimateSlytherin()
+    animateRavenclaw()
   }, interval * 3);
   // Animate the houses clockwise - Hufflepuff
   setTimeout(() => {
-    unanimateRavenclaw();
-    animateHufflepuff();
-  }, interval * 4);
+    unanimateRavenclaw()
+    animateHufflepuff()
+  }, interval * 4)
   // Animate the houses clockwise - Insignia
   setTimeout(() => {
-    unanimateHufflepuff();
-    animateInsignia();
-  }, interval * 5);
+    unanimateHufflepuff()
+    animateInsignia()
+  }, interval * 5)
   // Show the Hogwarts display of all students
   setTimeout(() => {
-    unanimateInsignia();
-    toggleHouseMenu();
-  }, interval * 6);
+    unanimateInsignia()
+    toggleHouseMenu()
+  }, interval * 6)
 })
 </script>
 
