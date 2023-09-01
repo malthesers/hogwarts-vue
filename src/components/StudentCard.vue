@@ -61,6 +61,8 @@
 </template>
 
 <script setup>
+import useMessages from '../composables/messages';
+
 const props = defineProps({
   hideDetails: Boolean,
   isHacked: Boolean,
@@ -69,6 +71,8 @@ const props = defineProps({
   student: Object,
 })
 const emits = defineEmits(['detailsExpanded', 'curseHogwarts'])
+
+const { addToMessages } = useMessages()
 
 const showDetails = ref(false)
 
@@ -89,6 +93,7 @@ function togglePrefect() {
   } else if (housePrefects.value.length === 2) {
     prefectButton.value.classList.add('shake')
     // TODO: display error message - 2 of house
+
   } else if (housePrefects.value.some(student => student.gender === props.student.gender)) {
     prefectButton.value.classList.add('shake')
     // TODO: display error message - same gender
@@ -111,6 +116,7 @@ function toggleInquisitor() {
   } else {
     inquisitorButton.value.classList.add('shake')
     // TODO: display error message - not full-blooded or slytherin
+    addToMessages('inquisitor', props.student.firstName)
   }
 }
 
