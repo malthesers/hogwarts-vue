@@ -17,6 +17,7 @@
           :search="search"
         />
     </section>
+    <MessageContainer/>
   </main>
 </template>
 
