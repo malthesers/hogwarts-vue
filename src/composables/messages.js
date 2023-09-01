@@ -1,5 +1,3 @@
-let messages = ref([]);
-
 export default function useMessages() {
   function addToMessages(type, query = "") {
     messages.value.push({
@@ -14,6 +12,8 @@ export default function useMessages() {
 
   return { messages, addToMessages };
 }
+
+let messages = ref([]);
 
 const titles = {
   gender: "Student was not made prefect!",
