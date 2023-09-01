@@ -24,6 +24,8 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+
 const gryffindorColour = ref(null)
 const slytherinColour = ref(null)
 const hufflepuffColour = ref(null)
@@ -97,6 +99,40 @@ function removeHightlights() {
   hufflepuffColour.value.classList.remove('opacity-50')
   ravenclawColour.value.classList.remove('opacity-50')
 }
+
+onMounted(() => {
+  const interval = 400
+
+  // Animate the houses clockwise - Gryffindor
+  setTimeout(() => {
+    animateGryffindor();
+  }, interval * 1);
+  // Animate the houses clockwise - Slytherin
+  setTimeout(() => {
+    unanimateGryffindor();
+    animateSlytherin();
+  }, interval * 2);
+  // Animate the houses clockwise - Ravenclaw
+  setTimeout(() => {
+    unanimateSlytherin();
+    animateRavenclaw();
+  }, interval * 3);
+  // Animate the houses clockwise - Hufflepuff
+  setTimeout(() => {
+    unanimateRavenclaw();
+    animateHufflepuff();
+  }, interval * 4);
+  // Animate the houses clockwise - Insignia
+  setTimeout(() => {
+    unanimateHufflepuff();
+    animateInsignia();
+  }, interval * 5);
+  // Show the Hogwarts display of all students
+  setTimeout(() => {
+    unanimateInsignia();
+    toggleHouseMenu();
+  }, interval * 6);
+})
 </script>
 
 <style scoped>
