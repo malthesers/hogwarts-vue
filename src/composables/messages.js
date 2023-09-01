@@ -6,6 +6,10 @@ export default function useMessages() {
       type: type,
       query: query,
     });
+
+    // setTimeout(() => {
+    //   messages.value.shift();
+    // }, 2500);
   }
 
   return { messages, addToMessages };

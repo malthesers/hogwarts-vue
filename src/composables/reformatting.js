@@ -14,7 +14,7 @@ export default function formatStudent(unformattedStudent, students, familyNameLi
   student.gender = getGender(unformattedStudent);
   student.house = getHouse(unformattedStudent);
   student.photo = getPhoto(unformattedStudent, lastNameList);
-  student.bloodStatus = getBloodStatus(unformattedStudent, familyNameList);
+  student.bloodStatus = getBloodStatus(student.lastName, familyNameList);
   student.captain = getCaptaincy(student.firstName);
 
   return student;
@@ -91,11 +91,11 @@ function getPhoto(unformattedStudent, lastNameList) {
   return photoSrc;
 }
 
-function getBloodStatus(unformattedStudent, familyNameList) {
+function getBloodStatus(lastName, familyNameList) {
   let bloodStatus = "Muggle-born";
 
-  if (familyNameList.pure.includes(unformattedStudent.lastName)) bloodStatus = "Pure-blood";
-  if (familyNameList.half.includes(unformattedStudent.lastName)) bloodStatus = "Half-blood";
+  if (familyNameList.pure.includes(lastName)) bloodStatus = "Pure-blood";
+  if (familyNameList.half.includes(lastName)) bloodStatus = "Half-blood";
 
   return bloodStatus;
 }
