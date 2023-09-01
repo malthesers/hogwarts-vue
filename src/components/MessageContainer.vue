@@ -26,6 +26,5 @@ const { messages } = useMessages()
 .slide-enter-from,
 .slide-leave-to {
   transform: translateY(-150%);
-  /* opacity: 0; */
 }
 </style>

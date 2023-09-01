@@ -18,6 +18,7 @@
         />
     </section>
     <MessageContainer/>
+    <HogwartsCrest/>
   </main>
 </template>
 
