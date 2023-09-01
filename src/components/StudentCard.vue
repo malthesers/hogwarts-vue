@@ -92,11 +92,10 @@ function togglePrefect() {
     props.student.prefect = false
   } else if (housePrefects.value.length === 2) {
     prefectButton.value.classList.add('shake')
-    // TODO: display error message - 2 of house
-
+    addToMessages('house', props.student.house)
   } else if (housePrefects.value.some(student => student.gender === props.student.gender)) {
     prefectButton.value.classList.add('shake')
-    // TODO: display error message - same gender
+    addToMessages('house', props.student.house)
   } else {
     props.student.prefect = true
   }
@@ -109,13 +108,11 @@ function toggleInquisitor() {
     if (props.student.inquisitor && props.isHacked) {
       setTimeout(() => {
         props.student.inquisitor = false
-
-        // TODO: display error message - not made inquisitor
+        addToMessages('hacking', props.student.firstName)
       }, 2000)
     }
   } else {
     inquisitorButton.value.classList.add('shake')
-    // TODO: display error message - not full-blooded or slytherin
     addToMessages('inquisitor', props.student.firstName)
   }
 }
@@ -128,12 +125,12 @@ function expelStudent() {
     expelledButton.value.classList.add('shake')
 
     if (expulsionAttempts.value === 1) {
-      // TODO: display erorr message - first attempt
+      addToMessages('expulsion1')
     } else if (expulsionAttempts.value === 2) {
-      // TODO: display erorr message - second attempt
+      addToMessages('expulsion2')
     } else if (expulsionAttempts.value === 3) {
+      addToMessages('expulsion3')
       emits('curseHogwarts')
-      // TODO: display erorr message - third attempt
     }
   } else {
     howler.value.classList.add('howler')
