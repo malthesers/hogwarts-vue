@@ -12,13 +12,13 @@
       <img ref="hufflepuffColour" class="hogwarts-crest-yellow" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-yellow.svg">
       <img ref="ravenclawColour" class="hogwarts-crest-blue" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-blue.svg">
       <!-- House crests -->
-      <img @mouseenter="animateGryffindor" @mouseleave="unanimateGryffindor" ref="gryffindorMascot" class="hogwarts-crest-gryffindor" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-gryffindor.svg">
-      <img @mouseenter="animateSlytherin" @mouseleave="unanimateSlytherin" ref="slytherinMascot" class="hogwarts-crest-slytherin" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-slytherin.svg">
-      <img @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" class="hogwarts-crest-hufflepuff-body" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-body.svg">
-      <img @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" ref="hufflepuffMascot" class="hogwarts-crest-hufflepuff-head" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-head.svg">
-      <img @mouseenter="animateRavenclaw" @mouseleave="unanimateRavenclaw" ref="ravenclawMascot" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
+      <img @click="emits('changeTheme', 'gryffindor')" @mouseenter="animateGryffindor" @mouseleave="unanimateGryffindor" ref="gryffindorMascot" class="hogwarts-crest-gryffindor" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-gryffindor.svg">
+      <img @click="emits('changeTheme', 'slytherin')" @mouseenter="animateSlytherin" @mouseleave="unanimateSlytherin" ref="slytherinMascot" class="hogwarts-crest-slytherin" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-slytherin.svg">
+      <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" class="hogwarts-crest-hufflepuff-body" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-body.svg">
+      <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" ref="hufflepuffMascot" class="hogwarts-crest-hufflepuff-head" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-head.svg">
+      <img @click="emits('changeTheme', 'ravenclaw')" @mouseenter="animateRavenclaw" @mouseleave="unanimateRavenclaw" ref="ravenclawMascot" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
       <!-- Hogwarts insignia -->
-      <img @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" ref="insignia" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
+      <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" ref="insignia" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
     </div>
   </footer>
 </template>
@@ -27,7 +27,7 @@
 const props = defineProps({
   showHouseSelector: Boolean
 })
-const emits = defineEmits(['openHouseSelector', 'closeHouseSelector'])
+const emits = defineEmits(['openHouseSelector', 'closeHouseSelector', 'changeTheme'])
 
 const gryffindorColour = ref(null)
 const slytherinColour = ref(null)

@@ -19,6 +19,7 @@
     </section>
     <MessageContainer/>
     <HogwartsCrest
+      @changeTheme="(value) => houseTheme = value"
       @closeHouseSelector="showHouseSelector = false"
       @openHouseSelector="showHouseSelector = true"
       :showHouseSelector="showHouseSelector"
@@ -33,6 +34,7 @@ import formatStudent from './composables/reformatting.js'
 import getMyself from './composables/hacking.js'
 
 const showHouseSelector = ref(true)
+const houseTheme = ref('hogwarts')
 
 const isHacked = ref(false)
 const isCursed = ref(false)
