@@ -20,6 +20,7 @@
     <MessageContainer/>
     <HogwartsCrest
       @closeHouseSelector="showHouseSelector = false"
+      @openHouseSelector="showHouseSelector = true"
       :showHouseSelector="showHouseSelector"
     />
   </main>
