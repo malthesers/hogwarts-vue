@@ -24,8 +24,6 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
-
 const gryffindorColour = ref(null)
 const slytherinColour = ref(null)
 const hufflepuffColour = ref(null)
