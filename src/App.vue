@@ -1,5 +1,5 @@
 <template>
-  <main class="min-h-screen bg-hogwarts-light text-hogwarts-accent font-merinda">
+  <main :class="`bg-${theme}-light text-${theme}-accent`" class="min-h-screen font-merinda">
     <section class="max-w-6xl mx-auto grid lg:grid-cols-[13rem_auto]">
         <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
         <StudentList
@@ -19,7 +19,7 @@
     </section>
     <MessageContainer/>
     <HogwartsCrest
-      @changeTheme="(value) => houseTheme = value"
+      @changeTheme="(value) => theme = value"
       @closeHouseSelector="showHouseSelector = false"
       @openHouseSelector="showHouseSelector = true"
       :showHouseSelector="showHouseSelector"
@@ -34,7 +34,7 @@ import formatStudent from './composables/reformatting.js'
 import getMyself from './composables/hacking.js'
 
 const showHouseSelector = ref(true)
-const houseTheme = ref('hogwarts')
+const theme = ref('hogwarts')
 
 const isHacked = ref(false)
 const isCursed = ref(false)
