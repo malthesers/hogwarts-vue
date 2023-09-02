@@ -3,7 +3,7 @@
     <div>
       <p v-if="showHouseSelector" class="text-3xl sm:text-4xl text-center mb-8">Select a House</p>
     </div>
-    <div @click="emits('openHouseSelector')" :class="[ showHouseSelector ? 'w-[20rem] sm:w-[30rem]' : '[&>*]:pointer-events-none w-[6rem] -translate-y-6' ]" class="hogwarts-crest-container mx-auto cursor-pointer duration-500">
+    <div @click.self="emits('openHouseSelector')" :class="[ showHouseSelector ? 'w-[20rem] sm:w-[30rem]' : '[&>*]:pointer-events-none w-[6rem] -translate-y-6' ]" class="hogwarts-crest-container mx-auto cursor-pointer duration-500">
       <!-- Frame -->
       <img class="hogwarts-crest-frame" src="../assets/hogwarts-parts/hogwarts-frame.svg">
       <!-- Background colours -->

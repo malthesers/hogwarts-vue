@@ -19,7 +19,7 @@
     </section>
     <MessageContainer/>
     <HogwartsCrest
-      @changeTheme="(value) => theme = value"
+      @changeTheme="(value) => changeTheme(value)"
       @closeHouseSelector="showHouseSelector = false"
       @openHouseSelector="showHouseSelector = true"
       :showHouseSelector="showHouseSelector"
@@ -70,6 +70,12 @@ const displayedStudents = computed(() => {
 
   return displayedStudents
 })
+
+function changeTheme(house) {
+  // Close house selector and change theme
+  showHouseSelector.value = false
+  theme.value = house
+}
 
 function hackTheSystem() {
   if (!isHacked.value) {
