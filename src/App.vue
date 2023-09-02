@@ -18,7 +18,10 @@
         />
     </section>
     <MessageContainer/>
-    <HogwartsCrest/>
+    <HogwartsCrest
+      @closeHouseSelector="showHouseSelector = false"
+      :showHouseSelector="showHouseSelector"
+    />
   </main>
 </template>
 
@@ -27,6 +30,8 @@ import studentsData from './assets/students.json'
 import families from './assets/families.json'
 import formatStudent from './composables/reformatting.js'
 import getMyself from './composables/hacking.js'
+
+const showHouseSelector = ref(true)
 
 const isHacked = ref(false)
 const isCursed = ref(false)

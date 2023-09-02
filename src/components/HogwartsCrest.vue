@@ -1,9 +1,9 @@
 <template>
-  <footer class="fixed z-20 bottom-0 w-full h-full bg-hogwarts-dark grid place-content-center">
+  <footer :class="[ showHouseSelector ? 'h-full' : 'h-20']" class="fixed z-20 bottom-0 w-full bg-hogwarts-dark grid place-content-center duration-200">
     <div>
-      <p class="text-3xl sm:text-4xl text-center mb-8">Select a House</p>
+      <p v-if="showHouseSelector" class="text-3xl sm:text-4xl text-center mb-8">Select a House</p>
     </div>
-    <div class="hogwarts-crest-container w-[20rem] sm:w-[30rem]">
+    <div :class="[ showHouseSelector ? 'w-[20rem] sm:w-[30rem]' : 'pointer-events-none w-[10rem] sm:w-[10rem]' ]" class="hogwarts-crest-container mx-auto">
       <!-- Frame -->
       <img class="hogwarts-crest-frame" src="../assets/hogwarts-parts/hogwarts-frame.svg">
       <!-- Background colours -->
@@ -24,6 +24,11 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  showHouseSelector: Boolean
+})
+const emits = defineEmits(['closeHouseSelector'])
+
 const gryffindorColour = ref(null)
 const slytherinColour = ref(null)
 const hufflepuffColour = ref(null)
@@ -99,7 +104,7 @@ function removeHightlights() {
 }
 
 onMounted(() => {
-  const interval = 400
+  const interval = 100
   // Animate the houses clockwise - Gryffindor
   setTimeout(() => {
     animateGryffindor()
@@ -127,7 +132,7 @@ onMounted(() => {
   // Show the Hogwarts display of all students
   setTimeout(() => {
     unanimateInsignia()
-    toggleHouseMenu()
+    emits('closeHouseSelector')
   }, interval * 6)
 })
 </script>
