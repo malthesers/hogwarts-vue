@@ -15,6 +15,7 @@
           :sorting="sorting"
           :filter="filter"
           :search="search"
+          :theme="theme"
         />
     </section>
     <MessageContainer/>
@@ -23,6 +24,7 @@
       @closeHouseSelector="showHouseSelector = false"
       @openHouseSelector="showHouseSelector = true"
       :showHouseSelector="showHouseSelector"
+      :theme="theme"
     />
   </main>
 </template>

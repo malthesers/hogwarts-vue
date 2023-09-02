@@ -3,21 +3,21 @@
     <div class="mb-4">
       <!-- Searching -->
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
-        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 outline-none">
+        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark`" class="border-2 border-hogwarts-accent p-2 outline-none">
         <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
       </div>
       <!-- Filtering -->
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
         <div class="cursor-pointer">
           <!-- Filtering header -->
-          <p @click="showFilteringMethods = !showFilteringMethods" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
+          <p @click="showFilteringMethods = !showFilteringMethods" :class="`bg-${theme}-dark`" class="border-2 border-hogwarts-accent p-2 flex justify-between items-center">
             <span>Filter by...</span>
             <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ showFilteringMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300">
           </p>
           <!-- Filtering dropwdown -->
           <Transition name="slide">
             <div v-if="showFilteringMethods" class="max-h-72 overflow-hidden">
-              <p v-for="(name, method) in filteringMethods" :key="method" @click="$emit('updateFilter', method), showFilteringMethods = false" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2">
+              <p v-for="(name, method) in filteringMethods" :key="method" @click="$emit('updateFilter', method), showFilteringMethods = false" :class="`bg-${theme}-dark`" class="border-2 border-hogwarts-accent p-2">
                 <span>{{ name }}</span>
               </p>
             </div>
@@ -29,14 +29,14 @@
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr]">
         <div class="cursor-pointer">
           <!-- Sorting header -->
-          <p @click="showSortingMethods = !showSortingMethods" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
+          <p @click="showSortingMethods = !showSortingMethods" :class="`bg-${theme}-dark`" class="border-2 border-hogwarts-accent p-2 flex justify-between items-center">
             <span>Sort by...</span>
             <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ showSortingMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300">
           </p>
           <!-- Sorting dropwdown -->
           <Transition name="slide">
             <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
-              <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" class="bg-hogwarts-dark text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
+              <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" :class="`bg-${theme}-dark`" class="text-hogwarts-accent border-2 border-hogwarts-accent p-2 flex justify-between items-center">
                 <span>{{ name }}</span>
                 <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ sorting === method ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300">
               </p>
@@ -73,7 +73,8 @@ const props = defineProps({
   isCursed: Boolean,
   sorting: String,
   filter: String,
-  search: String
+  search: String,
+  theme: String
 })
 const emits = defineEmits(['hackTheSystem', 'curseHogwarts', 'updateSearch', 'updateFilter', 'updateSorting'])
 

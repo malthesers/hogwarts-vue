@@ -1,5 +1,5 @@
 <template>
-  <footer :class="[ showHouseSelector ? 'h-full' : 'h-20']" class="fixed z-20 bottom-0 w-full bg-hogwarts-dark grid place-content-center duration-500">
+  <footer :class="[ showHouseSelector ? 'h-full' : 'h-20', `bg-${theme}-dark`]" class="fixed z-20 bottom-0 w-full grid place-content-center duration-500">
     <div>
       <p v-if="showHouseSelector" class="text-3xl sm:text-4xl text-center mb-8">Select a House</p>
     </div>
@@ -25,7 +25,8 @@
 
 <script setup>
 const props = defineProps({
-  showHouseSelector: Boolean
+  showHouseSelector: Boolean,
+  theme: String
 })
 const emits = defineEmits(['openHouseSelector', 'closeHouseSelector', 'changeTheme'])
 
