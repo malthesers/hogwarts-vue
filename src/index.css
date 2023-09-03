@@ -28,49 +28,49 @@ input {
   -webkit-appearance: none;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 1rem;
 }
 
-/* body:has(div#app):has([theme='hogwarts'])::-webkit-scrollbar-track {
+[theme='hogwarts']::-webkit-scrollbar-track {
   background-color: #392A48;
 }
 
-body:has(div#app):has([theme='hogwarts'])::-webkit-scrollbar-thumb {
+[theme='hogwarts']::-webkit-scrollbar-thumb {
   background-color: #2F223A;
 }
 
-body:has(div#app):has([theme='gryffindor'])::-webkit-scrollbar-track {
+[theme='gryffindor']::-webkit-scrollbar-track {
   background-color: #A62025;
 }
 
-body:has(div#app):has([theme='gryffindor'])::-webkit-scrollbar-thumb {
+[theme='gryffindor']::-webkit-scrollbar-thumb {
   background-color: #5D070A;
 }
 
-body:has(div#app):has([theme='slytherin'])::-webkit-scrollbar-track {
+[theme='slytherin']::-webkit-scrollbar-track {
   background-color: #214926;
 }
 
-body:has(div#app):has([theme='slytherin'])::-webkit-scrollbar-thumb {
+[theme='slytherin']::-webkit-scrollbar-thumb {
   background-color: #112D14;
 }
 
-body:has(div#app):has([theme='hufflepuff'])::-webkit-scrollbar-track {
+[theme='hufflepuff']::-webkit-scrollbar-track {
   background-color: #D9AB0D;
 }
 
-body:has(div#app):has([theme='hufflepuff'])::-webkit-scrollbar-thumb {
+[theme='hufflepuff']::-webkit-scrollbar-thumb {
   background-color: #A17F0B;
 }
 
-body:has(div#app):has([theme='ravenclaw'])::-webkit-scrollbar-track {
+[theme='ravenclaw']::-webkit-scrollbar-track {
   background-color: #02223B;
 }
 
-body:has(div#app):has([theme='ravenclaw'])::-webkit-scrollbar-thumb {
+[theme='ravenclaw']::-webkit-scrollbar-thumb {
   background-color: #01121E;
-} */
+}
 
 @keyframes shake {
   0% {

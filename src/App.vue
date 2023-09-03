@@ -1,5 +1,5 @@
 <template>
-  <main :theme="theme" :class="`bg-${theme}-light text-${theme}-accent`" class="min-h-screen font-merinda pb-20">
+  <main :class="`bg-${theme}-light text-${theme}-accent`" class="min-h-screen font-merinda pb-20">
     <section class="max-w-6xl mx-auto grid lg:grid-cols-[13rem_auto]">
         <OverviewPanel
           :currentLength="displayedStudents.length"
@@ -126,6 +126,10 @@ watch(displayedStudents, () => {
       })
     }
   }, 200)
+})
+
+watch(theme, () => {
+  document.querySelector("body").setAttribute('theme', theme.value)
 })
 
 onMounted(() => {
