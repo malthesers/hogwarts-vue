@@ -4,7 +4,7 @@
       <!-- Searching -->
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
         <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 outline-none">
-        <img src="../assets/icons/magnifying-wand.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
+        <IconWand :class="`fill-${theme}-accent`" class="h-12 place-self-center lg:row-start-1 lg:col-start-1"/>
       </div>
       <!-- Filtering -->
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr] mb-4">
@@ -23,7 +23,7 @@
             </div>
           </Transition>
         </div>
-        <img src="../assets/icons/badge.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
+        <IconBadge :class="`fill-${theme}-accent`" class="h-12 place-self-center lg:row-start-1 lg:col-start-1"/>
       </div>
       <!-- Sorting -->
       <div class="text-xl grid gap-2 grid-cols-[auto_3rem] lg:grid-cols-[5rem_1fr]">
@@ -43,7 +43,7 @@
             </div>
           </Transition>
         </div>
-        <img src="../assets/icons/sorting-hat.svg" alt="magnifying wand" class="h-12 place-self-center lg:row-start-1 lg:col-start-1">
+        <IconHat :class="`fill-${theme}-accent`" class="h-12 place-self-center lg:row-start-1 lg:col-start-1"/>
       </div>
     </div>
     <!-- List of students -->
