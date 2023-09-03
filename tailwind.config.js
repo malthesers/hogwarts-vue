@@ -16,7 +16,7 @@ module.exports = {
       "slytherin-accent": "#939393",
       "slytherin-light": "#214926",
       "slytherin-dark": "#112D14",
-      "hufflepuff-accent": "#000000",
+      "hufflepuff-accent": "#363430",
       "hufflepuff-light": "#D9AB0D",
       "hufflepuff-dark": "#A17F0B",
       "ravenclaw-accent": "#946B2D",
