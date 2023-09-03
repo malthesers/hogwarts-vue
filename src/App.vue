@@ -55,6 +55,9 @@ const displayedStudents = computed(() => {
   // Deep clone students array
   let displayedStudents = [ ...students.value ]
 
+  // Filter by house theme
+  if (theme.value !== 'hogwarts') displayedStudents = displayedStudents.filter(student => student.house.toLowerCase() === theme.value)
+
   // Include search query in name
   displayedStudents = displayedStudents.filter(student => student.fullName.toLowerCase().includes(search.value.toLowerCase()) || search.value === '')
 

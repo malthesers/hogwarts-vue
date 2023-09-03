@@ -32,7 +32,7 @@ body::-webkit-scrollbar {
   width: 1rem;
 }
 
-body:has(div#app):has([theme='hogwarts'])::-webkit-scrollbar-track {
+/* body:has(div#app):has([theme='hogwarts'])::-webkit-scrollbar-track {
   background-color: #392A48;
 }
 
@@ -70,7 +70,7 @@ body:has(div#app):has([theme='ravenclaw'])::-webkit-scrollbar-track {
 
 body:has(div#app):has([theme='ravenclaw'])::-webkit-scrollbar-thumb {
   background-color: #01121E;
-}
+} */
 
 @keyframes shake {
   0% {
