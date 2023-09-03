@@ -1,7 +1,10 @@
 <template>
   <main :class="`bg-${theme}-light text-${theme}-accent`" class="min-h-screen font-merinda">
     <section class="max-w-6xl mx-auto grid lg:grid-cols-[13rem_auto]">
-        <OverviewPanel :students="students" :currentLength="displayedStudents.length"/>
+        <OverviewPanel
+          :currentLength="displayedStudents.length"
+          :students="students"
+          :theme="theme"/>
         <StudentList
           @hackTheSystem="hackTheSystem"
           @curseHogwarts="isCursed = true, filter = 'current'"

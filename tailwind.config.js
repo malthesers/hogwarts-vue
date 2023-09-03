@@ -13,7 +13,7 @@ module.exports = {
       "gryffindor-accent": "#BDAC5C",
       "gryffindor-light": "#A62025",
       "gryffindor-dark": "#5D070A",
-      "slytherin-accent": "#767676",
+      "slytherin-accent": "#939393",
       "slytherin-light": "#214926",
       "slytherin-dark": "#112D14",
       "hufflepuff-accent": "#000000",

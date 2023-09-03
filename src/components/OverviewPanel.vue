@@ -30,7 +30,7 @@
         </div>
       </div>
       <!-- Hogwarts crest and current display -->
-      <img src="../assets/crests/hogwarts-crest.svg" alt="Hogwarts Crest" class="w-full max-w-[12rem]">      
+      <img :src="`/images/crests/${theme}-crest.svg`" alt="Hogwarts Crest" class="w-full max-w-[12rem]">      
       <p class="text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
         <span>Currently Displayed: </span>
         <Transition name="fade" mode="out-in">
@@ -43,8 +43,9 @@
 
 <script setup>
 const props = defineProps({
+  currentLength: Number,
   students: Array,
-  currentLength: Number
+  theme: String
 })
 const houses = ref(['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw'])
 
