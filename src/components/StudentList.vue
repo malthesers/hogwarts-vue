@@ -12,7 +12,7 @@
           <!-- Filtering header -->
           <p @click="showFilteringMethods = !showFilteringMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
             <span>Filter by...</span>
-            <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ showFilteringMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300">
+            <IconChevron :class="[ `fill-${theme}-accent`, showFilteringMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300"/>
           </p>
           <!-- Filtering dropwdown -->
           <Transition name="slide">
@@ -31,14 +31,14 @@
           <!-- Sorting header -->
           <p @click="showSortingMethods = !showSortingMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
             <span>Sort by...</span>
-            <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ showSortingMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300">
+            <IconChevron :class="[ `fill-${theme}-accent`, showSortingMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300"/>
           </p>
           <!-- Sorting dropwdown -->
           <Transition name="slide">
             <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
               <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2 flex justify-between items-center">
                 <span>{{ name }}</span>
-                <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ sorting === method ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300">
+                <IconChevron :class="[ `fill-${theme}-accent`, sorting === method ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300"/>
               </p>
             </div>
           </Transition>
