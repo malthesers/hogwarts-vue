@@ -1,7 +1,7 @@
 <template>
   <footer :class="[ showHouseSelector ? 'h-full' : 'h-20', `bg-${theme}-dark`]" class="fixed z-20 bottom-0 w-full grid place-content-center duration-500">
     <p :class="[ showHouseSelector ? 'scale-100 mb-8' : 'scale-0 mb-0']" class="text-3xl sm:text-4xl text-center duration-200">Select a House</p>
-    <div @click.self="emits('openHouseSelector')" :class="[ showHouseSelector ? 'w-[20rem] sm:w-[30rem]' : '[&>*]:pointer-events-none w-[6rem] mb-20' ]" class="hogwarts-crest-container mx-auto cursor-pointer duration-500">
+    <div @click.self="emits('openHouseSelector')" ref="hogwartsCrest" :class="[ showHouseSelector ? 'w-[20rem] sm:w-[30rem]' : '[&>*]:pointer-events-none w-[6rem] mb-20' ]" class="hogwarts-crest-container grid mx-auto cursor-pointer duration-500">
       <!-- Frame -->
       <img class="hogwarts-crest-frame" src="../assets/hogwarts-parts/hogwarts-frame.svg">
       <!-- Background colours -->
@@ -17,6 +17,7 @@
       <img @click="emits('changeTheme', 'ravenclaw')" @mouseenter="animateRavenclaw" @mouseleave="unanimateRavenclaw" ref="ravenclawMascot" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
       <!-- Hogwarts insignia -->
       <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" ref="insignia" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
+      <img @animationend="animateCrest" ref="mist" src="../assets/imperio-mist.svg" alt="imperio mist" class="w-0 place-self-center z-20">
     </div>
   </footer>
 </template>
@@ -24,10 +25,12 @@
 <script setup>
 const props = defineProps({
   showHouseSelector: Boolean,
+  isHacked: Boolean,
   theme: String
 })
 const emits = defineEmits(['openHouseSelector', 'closeHouseSelector', 'changeTheme'])
 
+const hogwartsCrest = ref(null)
 const gryffindorColour = ref(null)
 const slytherinColour = ref(null)
 const hufflepuffColour = ref(null)
@@ -37,6 +40,7 @@ const slytherinMascot = ref(null)
 const hufflepuffMascot = ref(null)
 const ravenclawMascot = ref(null)
 const insignia = ref(null)
+const mist = ref(null)
 
 function animateGryffindor() {
   addHighlight('gryffindor')
@@ -88,21 +92,7 @@ function unanimateInsignia() {
   insignia.value.classList.remove('animate')
 }
 
-function addHighlight(house) {
-  if (house !== 'gryffindor') gryffindorColour.value.classList.add('opacity-50')
-  if (house !== 'slytherin') slytherinColour.value.classList.add('opacity-50')
-  if (house !== 'hufflepuff') hufflepuffColour.value.classList.add('opacity-50')
-  if (house !== 'ravenclaw') ravenclawColour.value.classList.add('opacity-50')
-}
-
-function removeHightlights() {
-  gryffindorColour.value.classList.remove('opacity-50')
-  slytherinColour.value.classList.remove('opacity-50')
-  hufflepuffColour.value.classList.remove('opacity-50')
-  ravenclawColour.value.classList.remove('opacity-50')
-}
-
-onMounted(() => {
+function animateCrest() {
   const interval = 400
   // Animate the houses clockwise - Gryffindor
   setTimeout(() => {
@@ -133,6 +123,28 @@ onMounted(() => {
     unanimateInsignia()
     emits('closeHouseSelector')
   }, interval * 6)
+}
+
+function addHighlight(house) {
+  if (house !== 'gryffindor') gryffindorColour.value.classList.add('opacity-50')
+  if (house !== 'slytherin') slytherinColour.value.classList.add('opacity-50')
+  if (house !== 'hufflepuff') hufflepuffColour.value.classList.add('opacity-50')
+  if (house !== 'ravenclaw') ravenclawColour.value.classList.add('opacity-50')
+}
+
+function removeHightlights() {
+  gryffindorColour.value.classList.remove('opacity-50')
+  slytherinColour.value.classList.remove('opacity-50')
+  hufflepuffColour.value.classList.remove('opacity-50')
+  ravenclawColour.value.classList.remove('opacity-50')
+}
+
+onMounted(() => {
+  animateCrest()
+})
+
+watch(() => props.isHacked, () => {
+  mist.value.classList.add('appear')
 })
 </script>
 
@@ -245,5 +257,51 @@ onMounted(() => {
   width: 48.0876701031%;
   right: 2%;
   top: 47.5%;
+}
+
+.appear {
+  animation-name: appear;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  transform-origin: center;
+}
+
+@keyframes appear {
+  0% {
+    width: 0%;
+    height: 0%;
+    opacity: 0%;
+    transform: rotate(0deg);
+  }
+
+  20% {
+    width: 80%;
+    height: 80%;
+    opacity: 100%;
+    transform: rotate(-720deg);
+  }
+
+  40% {
+    transform: rotate(-1440deg);
+  }
+
+  60% {
+    transform: rotate(-2160deg);
+  }
+
+  80% {
+    width: 80%;
+    height: 80%;
+    opacity: 100%;
+    transform: rotate(-2880deg);
+  }
+
+  100% {
+    width: 0%;
+    height: 0%;
+    opacity: 0%;
+    transform: rotate(-3600deg);
+  }
 }
 </style>

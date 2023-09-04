@@ -96,9 +96,8 @@ function hackTheSystem() {
     sorting.value = ''
     theme.value = 'hogwarts'
 
-    // Display imperio mist
+    // Open house selector
     showHouseSelector.value = true
-    // TODO: display imperio mist on crest
 
     // Inject myself into students
     students.value.push(getMyself())
