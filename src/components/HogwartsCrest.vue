@@ -16,7 +16,7 @@
       <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHouse('hufflepuff')" @mouseleave="unanimateHouse('hufflepuff')" id="hufflepuff-part" class="hogwarts-crest-hufflepuff-head" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-head.svg">
       <img @click="emits('changeTheme', 'ravenclaw')" @mouseenter="animateHouse('ravenclaw')" @mouseleave="unanimateHouse('ravenclaw')" id="ravenclaw-part" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
       <!-- Hogwarts insignia -->
-      <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" id="hogwarts-part" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
+      <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateHouse('hogwarts')" @mouseleave="unanimateHouse('hogwarts')" id="hogwarts-part" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
       <img @animationend="animateCrest" ref="mist" src="../assets/imperio-mist.svg" alt="imperio mist" class="w-0 place-self-center z-20">
     </div>
   </footer>
@@ -29,6 +29,8 @@ const props = defineProps({
   theme: String
 })
 const emits = defineEmits(['openHouseSelector', 'closeHouseSelector', 'changeTheme'])
+
+const houses = ['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw']
 
 const hogwartsCrest = ref(null)
 const mist = ref(null)
@@ -43,48 +45,26 @@ function unanimateHouse(house) {
   document.querySelector(`#${house}-part`).classList.remove('animate')
 }
 
-function animateCrest() {
-  const interval = 400
-  // Animate the houses clockwise - Gryffindor
-  setTimeout(() => {
-    animateHouse('gryffindor')
-  }, interval * 1)
-  // Animate the houses clockwise - Slytherin
-  setTimeout(() => {
-    unanimateHouse('gryffindor')
-    animateHouse('slytherin')
-  }, interval * 2)
-  // Animate the houses clockwise - Ravenclaw
-  setTimeout(() => {
-    unanimateHouse('slytherin')
-    animateHouse('ravenclaw')
-  }, interval * 3);
-  // Animate the houses clockwise - Hufflepuff
-  setTimeout(() => {
-    unanimateHouse('ravenclaw')
-    animateHouse('hufflepuff')
-  }, interval * 4)
-  // Animate the houses clockwise - Insignia
-  setTimeout(() => {
-    unanimateHouse('hufflepuff')
-    animateHouse('hogwarts')
-  }, interval * 5)
-  // Show the Hogwarts display of all students
-  setTimeout(() => {
-    unanimateHouse('hogwarts')
-    emits('closeHouseSelector')
-  }, interval * 6)
-}
-
 function addHighlight(exception) {
-  ['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw'].forEach(house => {
+  houses.forEach(house => {
     if (exception !== house || exception === 'hogwarts') document.querySelector(`#${house}-colour`).classList.add('opacity-50')
   })
 }
 
 function removeHighlights() {
-  ['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw'].forEach(house => {
+  houses.forEach(house => {
     document.querySelector(`#${house}-colour`).classList.remove('opacity-50')
+  })
+}
+
+function animateCrest() {
+  const housesOrder = ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'hogwarts', '']
+  housesOrder.forEach((house, index) => {
+    setTimeout(() => {
+      if (index !== 0) unanimateHouse(housesOrder[index - 1]) // skip first iteration for unanimation
+      if (index !== 5) animateHouse(house)                    // skip last iteration for animation
+      if (index === 5) emits('closeHouseSelector')            // close house selector on last iteration
+    }, 400 * (index + 1))
   })
 }
 
