@@ -27,6 +27,7 @@
       @closeHouseSelector="showHouseSelector = false"
       @openHouseSelector="showHouseSelector = true"
       :showHouseSelector="showHouseSelector"
+      :isHacked="isHacked"
       :theme="theme"
     />
   </main>
@@ -89,13 +90,14 @@ function hackTheSystem() {
   if (!isHacked.value) {
     isHacked.value = true
 
-    // Reset student display settings
-    search.value = ""
-    filter.value = "all"
-    sorting.value = "firstName"
+    // Reset student display and theme settings
+    search.value = ''
+    filter.value = 'all'
+    sorting.value = ''
+    theme.value = 'hogwarts'
 
-    // TODO: reset house theme
-    // TODO: open crest animation
+    // Display imperio mist
+    showHouseSelector.value = true
     // TODO: display imperio mist on crest
 
     // Inject myself into students
