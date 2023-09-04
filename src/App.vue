@@ -7,7 +7,7 @@
           :theme="theme"/>
         <StudentList
           @hackTheSystem="hackTheSystem"
-          @curseHogwarts="isCursed = true, filter = 'current'"
+          @curseHogwarts="isCursed = true, filter = 'all'"
           @updateSearch="(value) => search = value"
           @updateFilter="(value) => filter = value"
           @updateSorting="(value) => sorting = value"
@@ -93,7 +93,7 @@ function hackTheSystem() {
     // Reset student display and theme settings
     search.value = ''
     filter.value = 'all'
-    sorting.value = ''
+    sorting.value = 'firstName'
     theme.value = 'hogwarts'
 
     // Open house selector

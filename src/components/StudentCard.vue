@@ -48,7 +48,7 @@
             </Transition>
           </button>
           <!-- Expel -->
-          <button @click="expelStudent" @animationend="expelledButton.classList.remove('shake')" ref="expelledButton" :disabled="student.expelled" :class="`bg-${theme}-accent text-${theme}-dark border-${theme}-dark`" class="border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
+          <button @click="expelStudent" @animationend.self="expelledButton.classList.remove('shake')" ref="expelledButton" :disabled="student.expelled" :class="`bg-${theme}-accent text-${theme}-dark border-${theme}-dark`" class="border-2 p-2 flex justify-between relative sm:col-span-2 md:col-span-1">
             <Transition name="fade" mode="out-in">
               <p :key="student.expelled">{{ student.expelled ? 'Expelled' : 'Expel Student' }}</p>
             </Transition>

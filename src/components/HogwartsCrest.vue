@@ -61,9 +61,9 @@ function animateCrest() {
   const housesOrder = ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff', 'hogwarts', '']
   housesOrder.forEach((house, index) => {
     setTimeout(() => {
-      if (index !== 0) unanimateHouse(housesOrder[index - 1]) // skip first iteration for unanimation
-      if (index !== 5) animateHouse(house)                    // skip last iteration for animation
-      if (index === 5) emits('closeHouseSelector')            // close house selector on last iteration
+      if (index !== 0) unanimateHouse(housesOrder[index - 1]) // Skip unanimation on first iteration
+      if (index !== 5) animateHouse(house)                    // Skip animation of '' on last iteration
+      if (index === 5) emits('closeHouseSelector')            // Close house selector on last iteration
     }, 400 * (index + 1))
   })
 }
