@@ -17,7 +17,7 @@
       <img @click="emits('changeTheme', 'ravenclaw')" @mouseenter="animateHouse('ravenclaw')" @mouseleave="unanimateHouse('ravenclaw')" id="ravenclaw-part" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
       <!-- Hogwarts insignia -->
       <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateHouse('hogwarts')" @mouseleave="unanimateHouse('hogwarts')" id="hogwarts-part" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
-      <img @animationend="animateCrest" ref="mist" src="../assets/imperio-mist.svg" alt="imperio mist" class="w-0 place-self-center z-20">
+      <img @animationend="animateCrest" ref="mist" src="../assets/hogwarts-parts/imperio-mist.svg" alt="imperio mist" class="w-0 place-self-center z-20">
     </div>
   </footer>
 </template>
