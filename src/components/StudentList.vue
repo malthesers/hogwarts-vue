@@ -17,7 +17,7 @@
           <!-- Filtering dropwdown -->
           <Transition name="slide">
             <div v-if="showFilteringMethods" class="max-h-72 overflow-hidden">
-              <p v-for="(name, method) in filteringMethods" :key="method" @click="$emit('updateFilter', method), showFilteringMethods = false" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2">
+              <p v-for="(name, method) in filteringMethods" :key="method" @click="$emit('updateFilter', method), showFilteringMethods = false" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2">
                 <span>{{ name }}</span>
               </p>
             </div>
@@ -36,7 +36,7 @@
           <!-- Sorting dropwdown -->
           <Transition name="slide">
             <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
-              <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
+              <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2 flex justify-between items-center">
                 <span>{{ name }}</span>
                 <img src="../assets/icons/chevron.svg" alt="chevron" :class="[ sorting === method ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300">
               </p>
