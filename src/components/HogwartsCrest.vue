@@ -5,18 +5,18 @@
       <!-- Frame -->
       <img class="hogwarts-crest-frame" src="../assets/hogwarts-parts/hogwarts-frame.svg">
       <!-- Background colours -->
-      <img ref="gryffindorColour" class="hogwarts-crest-red" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-red.svg">
-      <img ref="slytherinColour" class="hogwarts-crest-green" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-green.svg">
-      <img ref="hufflepuffColour" class="hogwarts-crest-yellow" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-yellow.svg">
-      <img ref="ravenclawColour" class="hogwarts-crest-blue" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-blue.svg">
+      <img id="gryffindor-colour" class="hogwarts-crest-red" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-red.svg">
+      <img id="slytherin-colour" class="hogwarts-crest-green" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-green.svg">
+      <img id="hufflepuff-colour" class="hogwarts-crest-yellow" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-yellow.svg">
+      <img id="ravenclaw-colour" class="hogwarts-crest-blue" src="../assets/hogwarts-parts/hogwarts-colours/hogwarts-blue.svg">
       <!-- House crests -->
-      <img @click="emits('changeTheme', 'gryffindor')" @mouseenter="animateGryffindor" @mouseleave="unanimateGryffindor" ref="gryffindorMascot" class="hogwarts-crest-gryffindor" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-gryffindor.svg">
-      <img @click="emits('changeTheme', 'slytherin')" @mouseenter="animateSlytherin" @mouseleave="unanimateSlytherin" ref="slytherinMascot" class="hogwarts-crest-slytherin" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-slytherin.svg">
-      <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" class="hogwarts-crest-hufflepuff-body" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-body.svg">
-      <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHufflepuff" @mouseleave="unanimateHufflepuff" ref="hufflepuffMascot" class="hogwarts-crest-hufflepuff-head" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-head.svg">
-      <img @click="emits('changeTheme', 'ravenclaw')" @mouseenter="animateRavenclaw" @mouseleave="unanimateRavenclaw" ref="ravenclawMascot" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
+      <img @click="emits('changeTheme', 'gryffindor')" @mouseenter="animateHouse('gryffindor')" @mouseleave="unanimateHouse('gryffindor')" id="gryffindor-part" class="hogwarts-crest-gryffindor" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-gryffindor.svg">
+      <img @click="emits('changeTheme', 'slytherin')" @mouseenter="animateHouse('slytherin')" @mouseleave="unanimateHouse('slytherin')" id="slytherin-part" class="hogwarts-crest-slytherin" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-slytherin.svg">
+      <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHouse('hufflepuff')" @mouseleave="unanimateHouse('hufflepuff')" class="hogwarts-crest-hufflepuff-body" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-body.svg">
+      <img @click="emits('changeTheme', 'hufflepuff')" @mouseenter="animateHouse('hufflepuff')" @mouseleave="unanimateHouse('hufflepuff')" id="hufflepuff-part" class="hogwarts-crest-hufflepuff-head" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-hufflepuff-head.svg">
+      <img @click="emits('changeTheme', 'ravenclaw')" @mouseenter="animateHouse('ravenclaw')" @mouseleave="unanimateHouse('ravenclaw')" id="ravenclaw-part" class="hogwarts-crest-ravenclaw" src="../assets/hogwarts-parts/hogwarts-mascots/hogwarts-ravenclaw.svg">
       <!-- Hogwarts insignia -->
-      <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" ref="insignia" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
+      <img @click="emits('changeTheme', 'hogwarts')" @mouseenter="animateInsignia" @mouseleave="unanimateInsignia" id="hogwarts-part" class="hogwarts-crest-insignia" src="../assets/hogwarts-parts/hogwarts-insignia.svg">
       <img @animationend="animateCrest" ref="mist" src="../assets/imperio-mist.svg" alt="imperio mist" class="w-0 place-self-center z-20">
     </div>
   </footer>
@@ -31,112 +31,61 @@ const props = defineProps({
 const emits = defineEmits(['openHouseSelector', 'closeHouseSelector', 'changeTheme'])
 
 const hogwartsCrest = ref(null)
-const gryffindorColour = ref(null)
-const slytherinColour = ref(null)
-const hufflepuffColour = ref(null)
-const ravenclawColour = ref(null)
-const gryffindorMascot = ref(null)
-const slytherinMascot = ref(null)
-const hufflepuffMascot = ref(null)
-const ravenclawMascot = ref(null)
-const insignia = ref(null)
 const mist = ref(null)
 
-function animateGryffindor() {
-  addHighlight('gryffindor')
-  gryffindorMascot.value.classList.add('animate')
+function animateHouse(house) {
+  addHighlight(house)
+  document.querySelector(`#${house}-part`).classList.add('animate')
 }
 
-function unanimateGryffindor() {
-  removeHightlights()
-  gryffindorMascot.value.classList.remove('animate')
-}
-
-function animateSlytherin() {
-  addHighlight('slytherin')
-  slytherinMascot.value.classList.add('animate')
-}
-
-function unanimateSlytherin() {
-  removeHightlights()
-  slytherinMascot.value.classList.remove('animate')
-}
-
-function animateHufflepuff() {
-  addHighlight('hufflepuff')
-  hufflepuffMascot.value.classList.add('animate')
-}
-
-function unanimateHufflepuff() {
-  removeHightlights()
-  hufflepuffMascot.value.classList.remove('animate')
-}
-
-function animateRavenclaw() {
-  addHighlight('ravenclaw')
-  ravenclawMascot.value.classList.add('animate')
-}
-
-function unanimateRavenclaw() {
-  removeHightlights()
-  ravenclawMascot.value.classList.remove('animate')
-}
-
-function animateInsignia() {
-  addHighlight('')
-  insignia.value.classList.add('animate')
-}
-
-function unanimateInsignia() {
-  removeHightlights()
-  insignia.value.classList.remove('animate')
+function unanimateHouse(house) {
+  removeHighlights()
+  document.querySelector(`#${house}-part`).classList.remove('animate')
 }
 
 function animateCrest() {
   const interval = 400
   // Animate the houses clockwise - Gryffindor
   setTimeout(() => {
-    animateGryffindor()
+    animateHouse('gryffindor')
   }, interval * 1)
   // Animate the houses clockwise - Slytherin
   setTimeout(() => {
-    unanimateGryffindor()
-    animateSlytherin()
+    unanimateHouse('gryffindor')
+    animateHouse('slytherin')
   }, interval * 2)
   // Animate the houses clockwise - Ravenclaw
   setTimeout(() => {
-    unanimateSlytherin()
-    animateRavenclaw()
+    unanimateHouse('slytherin')
+    animateHouse('ravenclaw')
   }, interval * 3);
   // Animate the houses clockwise - Hufflepuff
   setTimeout(() => {
-    unanimateRavenclaw()
-    animateHufflepuff()
+    unanimateHouse('ravenclaw')
+    animateHouse('hufflepuff')
   }, interval * 4)
   // Animate the houses clockwise - Insignia
   setTimeout(() => {
-    unanimateHufflepuff()
-    animateInsignia()
+    unanimateHouse('hufflepuff')
+    animateHouse('hogwarts')
   }, interval * 5)
   // Show the Hogwarts display of all students
   setTimeout(() => {
-    unanimateInsignia()
+    unanimateHouse('hogwarts')
     emits('closeHouseSelector')
   }, interval * 6)
 }
 
-function addHighlight(house) {
-  if (house !== 'gryffindor') gryffindorColour.value.classList.add('opacity-50')
-  if (house !== 'slytherin') slytherinColour.value.classList.add('opacity-50')
-  if (house !== 'hufflepuff') hufflepuffColour.value.classList.add('opacity-50')
-  if (house !== 'ravenclaw') ravenclawColour.value.classList.add('opacity-50')
+function addHighlight(exception) {
+  ['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw'].forEach(house => {
+    if (exception !== house || exception === 'hogwarts') document.querySelector(`#${house}-colour`).classList.add('opacity-50')
+  })
 }
 
-function removeHightlights() {
-  gryffindorColour.value.classList.remove('opacity-50')
-  slytherinColour.value.classList.remove('opacity-50')
-  hufflepuffColour.value.classList.remove('opacity-50')
-  ravenclawColour.value.classList.remove('opacity-50')
+function removeHighlights() {
+  ['gryffindor', 'slytherin', 'hufflepuff', 'ravenclaw'].forEach(house => {
+    document.querySelector(`#${house}-colour`).classList.remove('opacity-50')
+  })
 }
 
 onMounted(() => {
