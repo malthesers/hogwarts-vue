@@ -21,7 +21,9 @@
           :theme="theme"
         />
     </section>
-    <MessageContainer/>
+    <MessageContainer
+      :theme="theme"
+    />
     <HogwartsCrest
       @changeTheme="(value) => changeTheme(value)"
       @closeHouseSelector="showHouseSelector = false"
