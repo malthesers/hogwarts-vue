@@ -162,7 +162,7 @@ watch(showDetails, () => {
 <style scoped>
 .slide-enter-active,
 .slide-leave-active {
-  transition: max-height 350ms ease-in-out;
+  transition: max-height 400ms ease-in-out;
 }
 
 .slide-enter-from,
