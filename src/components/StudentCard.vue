@@ -34,14 +34,14 @@
         <!-- Button group -->
         <div :class="{ 'opacity-30' : student.expelled }" class="grid sm:grid-cols-2 md:grid-cols-3 gap-2 my-4 duration-200">
           <!-- Prefect -->
-          <button @click="togglePrefect" @animationend="prefectButton.classList.remove('shake')" ref="prefectButton" :disabled="student.expelled" :class="`bg-${theme}-accent text-${theme}-dark border-${theme}-dark`" class="border-2 p-2 flex justify-between">
+          <button @click="togglePrefect" @animationend="prefectButton?.classList.remove('shake')" ref="prefectButton" :disabled="student.expelled" :class="`bg-${theme}-accent text-${theme}-dark border-${theme}-dark`" class="border-2 p-2 flex justify-between">
             <p>Prefect</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.prefect">{{ student.prefect ? '-' : '+' }}</span>
             </Transition>
           </button>
           <!-- Inquisitor -->
-          <button @click="toggleInquisitor" @animationend="inquisitorButton.classList.remove('shake')" ref="inquisitorButton" :disabled="student.expelled" :class="`bg-${theme}-accent text-${theme}-dark border-${theme}-dark`" class="border-2 p-2 flex justify-between">
+          <button @click="toggleInquisitor" @animationend="inquisitorButton?.classList.remove('shake')" ref="inquisitorButton" :disabled="student.expelled" :class="`bg-${theme}-accent text-${theme}-dark border-${theme}-dark`" class="border-2 p-2 flex justify-between">
             <p>Inquisitor</p>
             <Transition name="fade" mode="out-in">
               <span :key="student.inquisitor">{{ student.inquisitor ? '-' : '+' }}</span>
@@ -104,7 +104,7 @@ function togglePrefect() {
 }
 
 function toggleInquisitor() {
-  if (props.student.bloodStatus === 'Full-blooded' || props.student.house === 'Slytherin') {
+  if (props.student.bloodStatus === 'Pure-blood' || props.student.house === 'Slytherin') {
     props.student.inquisitor = !props.student.inquisitor
 
     if (props.student.inquisitor && props.isHacked) {
