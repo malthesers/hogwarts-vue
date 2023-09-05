@@ -78,7 +78,7 @@ const props = defineProps({
   search: String,
   theme: String
 })
-const emits = defineEmits(['hackTheSystem', 'curseHogwarts', 'updateSearch', 'updateFilter', 'updateSorting', 'reverseSortingOrder'])
+const emits = defineEmits(['hackTheSystem', 'curseHogwarts', 'updateSearch', 'updateFilter', 'updateSorting', 'reverseSortingOrder', 'resetSortingOrder'])
 
 const expandedIndex = ref()
 
@@ -105,7 +105,11 @@ function verifyHacking() {
 
 function updateSorting(method) {
   emits('updateSorting', method)
-  if (props.sorting === method) emits('reverseSortingOrder')
+  if (props.sorting === method) {
+    emits('reverseSortingOrder')
+  } else {
+    emits('resetSortingOrder')
+  }
 }
 </script>
 

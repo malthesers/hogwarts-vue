@@ -12,6 +12,7 @@
           @updateFilter="(value) => filter = value"
           @updateSorting="(value) => sorting = value"
           @reverseSortingOrder="sortingOrder *= -1"
+          @resetSortingOrder="sortingOrder = 1"
           :displayedStudents="displayedStudents"
           :students="students"
           :isHacked="isHacked"
