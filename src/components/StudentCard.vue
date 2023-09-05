@@ -94,10 +94,10 @@ function togglePrefect() {
     props.student.prefect = false
   } else if (housePrefects.value.length === 2) {
     prefectButton.value.classList.add('shake')
-    addToMessages('house', props.student.house)
+    addToMessages('house', props.student.house, props.isCursed)
   } else if (housePrefects.value.some(student => student.gender === props.student.gender)) {
     prefectButton.value.classList.add('shake')
-    addToMessages('house', props.student.house)
+    addToMessages('house', props.student.house, props.isCursed)
   } else {
     props.student.prefect = true
   }
@@ -110,12 +110,12 @@ function toggleInquisitor() {
     if (props.student.inquisitor && props.isHacked) {
       setTimeout(() => {
         props.student.inquisitor = false
-        addToMessages('hacking', props.student.firstName)
+        addToMessages('hacking', props.student.firstName, props.isCursed)
       }, 2000)
     }
   } else {
     inquisitorButton.value.classList.add('shake')
-    addToMessages('inquisitor', props.student.firstName)
+    addToMessages('inquisitor', props.student.firstName, props.isCursed)
   }
 }
 
@@ -135,7 +135,7 @@ function expelStudent() {
       emits('curseHogwarts')
       curseHogwarts()
     } else {
-      addToMessages('curse')
+      addToMessages('curse', '', props.isCursed)
     }
   } else {
     howler.value.classList.add('howler')

@@ -1,8 +1,9 @@
 export default function useMessages() {
-  function addToMessages(type, query = "") {
+  function addToMessages(type, query = "", isCursed) {
+    console.log(isCursed);
     messages.value.push({
-      title: titles[type],
-      description: `${query} ${descriptions[type]}`,
+      title: isCursed ? titles["curse"] : titles[type],
+      description: isCursed ? descriptions["curse"] : `${query} ${descriptions[type]}`,
     });
 
     setTimeout(() => {
