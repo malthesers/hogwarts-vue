@@ -134,6 +134,8 @@ function expelStudent() {
       addToMessages('expulsion3')
       emits('curseHogwarts')
       curseHogwarts()
+    } else {
+      addToMessages('curse')
     }
   } else {
     howler.value.classList.add('howler')
