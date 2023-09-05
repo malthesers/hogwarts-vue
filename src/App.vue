@@ -42,7 +42,7 @@
 import studentsData from './assets/students.json'
 import families from './assets/families.json'
 import formatStudent from './composables/reformatting.js'
-import getMyself from './composables/hacking.js'
+import getMyself from './composables/injection.js'
 
 const showHouseSelector = ref(true)
 const theme = ref('hogwarts')
