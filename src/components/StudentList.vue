@@ -36,9 +36,9 @@
           <!-- Sorting dropwdown -->
           <Transition name="slide">
             <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
-              <p v-for="(name, method) in sortingMethods" :key="method" @click="$emit('updateSorting', method)" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2 flex justify-between items-center">
+              <p v-for="(name, method) in sortingMethods" :key="method" @click="updateSorting(method)" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2 flex justify-between items-center">
                 <span>{{ name }}</span>
-                <IconChevron :class="[ `fill-${theme}-accent`, sorting === method ? 'rotate-180' : 'rotate-0' ]" class="h-4 duration-300"/>
+                <IconChevron :class="[ `fill-${theme}-accent`, sortingOrder === 1 ? 'scale-y-100' : '-scale-y-100', sorting === method ? '' : 'scale-y-0 opacity-0' ]" class="h-4 duration-300"/>
               </p>
             </div>
           </Transition>
@@ -72,12 +72,13 @@ const props = defineProps({
   students: Array,
   isHacked: Boolean,
   isCursed: Boolean,
+  sortingOrder: Number,
   sorting: String,
   filter: String,
   search: String,
   theme: String
 })
-const emits = defineEmits(['hackTheSystem', 'curseHogwarts', 'updateSearch', 'updateFilter', 'updateSorting'])
+const emits = defineEmits(['hackTheSystem', 'curseHogwarts', 'updateSearch', 'updateFilter', 'updateSorting', 'reverseSortingOrder'])
 
 const expandedIndex = ref()
 
@@ -100,6 +101,11 @@ const sortingMethods = ref({
 
 function verifyHacking() {
   if (props.search === "imperio") emits('hackTheSystem')
+}
+
+function updateSorting(method) {
+  emits('updateSorting', method)
+  if (props.sorting === method) emits('reverseSortingOrder')
 }
 </script>
 
