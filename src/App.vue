@@ -53,6 +53,7 @@ const students = ref([])
 const search = ref('')
 const filter = ref('all')
 const sorting = ref('firstName')
+const sortingOrder = ref(1)
 
 const displayedStudents = computed(() => {
   // Deep clone students array
@@ -74,7 +75,7 @@ const displayedStudents = computed(() => {
   }
 
   // Sort by chosen method
-  displayedStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? 1 : -1 })
+  displayedStudents.sort((a, b) => { return a[sorting.value] > b[sorting.value] ? (1 * sortingOrder.value) : (-1 * sortingOrder.value) })
 
   // If hacked, add me to start of array
   if (isHacked.value) displayedStudents.sort((a, b) => { return a.firstName === 'Malthe' ? -1 : 1 })
