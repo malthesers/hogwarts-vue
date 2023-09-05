@@ -31,12 +31,12 @@
       </div>
       <!-- Hogwarts crest and current display -->
       <img :src="`/images/crests/${theme}-crest.svg`" alt="Hogwarts Crest" class="w-full max-w-[12rem]">      
-      <p class="text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
-        <span>Currently Displayed: </span>
+      <div class="text-xl sm:text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
+        <p class="inline-block">Currently Displayed: </p>
         <Transition name="fade" mode="out-in">
-          <span :key="currentLength" class="inline-block w-8 text-left">{{ currentLength }}</span>
+          <span :key="currentLength" class="inline-block w-8 ml-2 text-left">{{ currentLength }}</span>
         </Transition>
-      </p>
+      </div>
     </div>
   </aside>
 </template>
