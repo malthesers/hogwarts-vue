@@ -1,13 +1,13 @@
 <template>
   <section class="p-4">
-    <div class="mb-4">
+    <div class="mb-4 text-lg md:text-2xl">
       <!-- Searching -->
-      <div class="text-lg sm:text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr] mb-4">
+      <div class="grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr] mb-4">
         <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark border-${theme}-accent`" class="w-full border-2 p-2 outline-none">
         <IconWand :class="`fill-${theme}-accent`" class="h-12 place-self-center sm:row-start-1 sm:col-start-1"/>
       </div>
       <!-- Filtering -->
-      <div class="text-lg sm:text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr] mb-4">
+      <div class="grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr] mb-4">
         <div class="cursor-pointer">
           <!-- Filtering header -->
           <p @click="showFilteringMethods = !showFilteringMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
@@ -26,22 +26,29 @@
         <IconBadge :class="`fill-${theme}-accent`" class="h-12 place-self-center sm:row-start-1 sm:col-start-1"/>
       </div>
       <!-- Sorting -->
-      <div class="text-lg sm:text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr]">
+      <div class="grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr]">
         <div class="cursor-pointer">
           <!-- Sorting header -->
-          <p @click="showSortingMethods = !showSortingMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
+          <p @click="showSortingMethods = !showSortingMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="sm:hidden border-2 p-2 flex justify-between items-center">
             <span>Sort by...</span>
             <IconChevron :class="[ `fill-${theme}-accent`, showSortingMethods ? 'rotate-180' : 'rotate-0']" class="h-4 duration-300"/>
           </p>
-          <!-- Sorting dropwdown -->
+          <!-- Sorting dropwdown for mobile -->
           <Transition name="slide">
-            <div v-if="showSortingMethods" class="max-h-40 overflow-hidden">
+            <div v-if="showSortingMethods" class="sm:hidden max-h-40 overflow-hidden">
               <p v-for="(name, method) in sortingMethods" :key="method" @click="updateSorting(method)" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2 flex justify-between items-center">
                 <span>{{ name }}</span>
                 <IconChevron :class="[ `fill-${theme}-accent`, sortingOrder === 1 ? 'scale-y-100' : '-scale-y-100', sorting === method ? '' : 'scale-y-0 opacity-0' ]" class="h-4 duration-300"/>
               </p>
             </div>
           </Transition>
+          <!-- Sorting bar for desktop -->
+          <div class="hidden sm:grid grid-cols-3">
+            <p v-for="(name, method) in sortingMethods" :key="method" @click="updateSorting(method)" class="p-2 flex justify-between items-center">
+              <span>{{ name }}</span>
+              <IconChevron :class="[ `fill-${theme}-accent`, sortingOrder === 1 ? 'scale-y-100' : '-scale-y-100', sorting === method ? '' : 'scale-y-0 opacity-0' ]" class="h-3 md:h-4 duration-300"/>
+            </p>
+          </div>
         </div>
         <IconHat :class="`fill-${theme}-accent`" class="h-12 place-self-center sm:row-start-1 sm:col-start-1"/>
       </div>

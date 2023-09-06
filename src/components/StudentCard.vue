@@ -8,10 +8,10 @@
     <!-- Student basic info -->
     <div @click="showDetails = !showDetails, $emit('detailsExpanded')" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
       <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
-      <div class="text-xl flex flex-col items-start justify-between my-2 md:text-3xl sm:grid sm:grid-cols-3 sm:items-center">
-        <p>{{ student.firstName }}</p>
-        <p>{{ student.lastName }}</p>
-        <p>{{ student.house }}</p>
+      <div class="text-xl flex flex-col items-start justify-between my-2 md:text-2xl sm:grid sm:grid-cols-3 sm:items-center">
+        <p class="px-2">{{ student.firstName }}</p>
+        <p class="px-2">{{ student.lastName }}</p>
+        <p class="px-2">{{ student.house }}</p>
       </div>
     </div>
     <!-- Student detailed info -->
