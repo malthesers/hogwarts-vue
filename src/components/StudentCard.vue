@@ -1,6 +1,5 @@
 <template>
   <article class="relative w-full mb-4 overflow-hidden">
-    <!-- <div :style="{ backgroundImage: `url(/images/crests/${student.house.toLowerCase()}-crest.svg)`}" class="absolute top-0 left-0 w-full h-full opacity-20 bg-no-repeat bg-top bg-[length:18rem]"></div> -->
     <!-- Background crest -->
     <div class="absolute top-0 left-0 p-4 grid w-full h-full">
       <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 lg:w-1/4 m-auto opacity-20">
