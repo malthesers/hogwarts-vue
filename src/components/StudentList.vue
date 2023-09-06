@@ -2,12 +2,12 @@
   <section class="p-4">
     <div class="mb-4">
       <!-- Searching -->
-      <div class="text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] lg:grid-cols-[7rem_1fr] mb-4">
-        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 outline-none">
+      <div class="text-lg sm:text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] lg:grid-cols-[7rem_1fr] mb-4">
+        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark border-${theme}-accent`" class="w-full border-2 p-2 outline-none">
         <IconWand :class="`fill-${theme}-accent`" class="h-12 place-self-center lg:row-start-1 lg:col-start-1"/>
       </div>
       <!-- Filtering -->
-      <div class="text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] lg:grid-cols-[7rem_1fr] mb-4">
+      <div class="text-lg sm:text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] lg:grid-cols-[7rem_1fr] mb-4">
         <div class="cursor-pointer">
           <!-- Filtering header -->
           <p @click="showFilteringMethods = !showFilteringMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
@@ -26,7 +26,7 @@
         <IconBadge :class="`fill-${theme}-accent`" class="h-12 place-self-center lg:row-start-1 lg:col-start-1"/>
       </div>
       <!-- Sorting -->
-      <div class="text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] lg:grid-cols-[7rem_1fr]">
+      <div class="text-lg sm:text-xl grid gap-2 sm:gap-4 grid-cols-[auto_4rem] lg:grid-cols-[7rem_1fr]">
         <div class="cursor-pointer">
           <!-- Sorting header -->
           <p @click="showSortingMethods = !showSortingMethods" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 p-2 flex justify-between items-center">
