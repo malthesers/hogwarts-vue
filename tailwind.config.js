@@ -5,6 +5,12 @@ module.exports = {
     fontFamily: {
       merinda: ["Merienda, serif, system-ui"],
     },
+    screens: {
+      xs: "400px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+    },
     colors: {
       "howler-accent": "#3A3120",
       "hogwarts-accent": "#FAECBF",

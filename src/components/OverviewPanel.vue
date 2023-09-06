@@ -1,7 +1,7 @@
 <template>
   <aside>
     <div class="lg:fixed w-full lg:max-w-[13rem] grid grid-cols-2 lg:grid-cols-1 lg:gap-4 p-4 text-center">
-      <div class="flex flex-col justify-center">
+      <div class="flex flex-col justify-center mb-4 col-span-2 xs:col-span-1">
         <div>
           <p class="text-3xl lg:text-4xl mb-2">Hogwarts</p>
           <p class="text-xl lg:text-2xl mb-2">Class of 1991</p>
@@ -30,7 +30,7 @@
         </div>
       </div>
       <!-- Hogwarts crest and current display -->
-      <img :src="`/images/crests/${theme}-crest.svg`" alt="Hogwarts Crest" class="w-full max-w-[12rem]">      
+      <img :src="`/images/crests/${theme}-crest.svg`" alt="Hogwarts Crest" class="w-full max-w-[12rem] mx-auto col-span-2 xs:col-span-1">      
       <div class="text-xl sm:text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
         <p class="inline-block">Currently Displayed: </p>
         <Transition name="fade" mode="out-in">
