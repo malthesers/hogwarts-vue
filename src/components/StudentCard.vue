@@ -2,11 +2,11 @@
   <article class="relative w-full mb-4 overflow-hidden">
     <!-- Background crest -->
     <div class="absolute top-0 left-0 p-4 grid w-full h-full">
-      <img :src="`/images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 lg:w-1/4 m-auto opacity-20">
+      <img :src="`./images/crests/${student.house.toLowerCase()}-crest.svg`" class="w-2/3 lg:w-1/4 m-auto opacity-20">
     </div>
     <!-- Student basic info -->
     <div @click="showDetails = !showDetails, $emit('detailsExpanded')" class="relative grid grid-cols-[7rem_1fr] gap-4 cursor-pointer">
-      <img :src="`/images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
+      <img :src="`./images/students/${student.photo}`" :alt="`${student.firstName} ${student.lastName}`" class="rounded-[26px]">
       <div class="text-xl flex flex-col items-start justify-between my-2 md:text-2xl sm:grid sm:grid-cols-3 sm:items-center">
         <p class="px-2">{{ student.firstName }}</p>
         <p class="px-2">{{ student.lastName }}</p>
@@ -24,7 +24,7 @@
           </div>
           <!-- Badge case -->
           <div class="mt-4 md:mt-0 flex gap-2 justify-between col-span-3 lg:col-span-1">
-            <img :src="`images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
+            <img :src="`/images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
             <img src="/images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
             <img src="/images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
             <img src="/images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">

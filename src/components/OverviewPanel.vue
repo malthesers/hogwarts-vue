@@ -16,14 +16,14 @@
             </span>
             <!-- Expelled count -->
             <span class="w-8 h-8 inline-grid place-content-center">
-              <img :src="`/images/badges/expelled.svg`" class="w-auto h-8 grid-center opacity-50">
+              <img src="/images/badges/expelled.svg" class="w-auto h-8 grid-center opacity-50">
               <span class="text-2xl grid-center z-10">{{ expelledStudents.length }}</span>
             </span>
           </div>
           <!-- House count -->
           <div class="flex justify-center">
             <span v-for="house in houses" :key="house" class="w-8 h-8 inline-grid place-content-center">
-              <img :src="`/images/crests/${house}-crest.svg`" class="w-auto h-8 grid-center opacity-50">
+              <img :src="`./images/crests/${house}-crest.svg`" class="w-auto h-8 grid-center opacity-50">
               <span class="text-2xl grid-center z-10">{{ studentsCount[house].length }}</span>
             </span>
           </div>
