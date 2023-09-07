@@ -24,7 +24,7 @@
           </div>
           <!-- Badge case -->
           <div class="mt-4 md:mt-0 flex gap-2 justify-between col-span-3 lg:col-span-1">
-            <img :src="`/images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
+            <img :src="`./images/badges/cap-${student.house.toLowerCase()}.svg`" :class="[ student.captain ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
             <img src="/images/badges/prefect.svg" :class="[ student.prefect ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
             <img src="/images/badges/inquisitor.svg" :class="[ student.inquisitor ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
             <img src="/images/badges/expelled.svg" :class="[ student.expelled ? 'opacity-100' : 'opacity-50']" class="h-16 sm:h-20 duration-300">
