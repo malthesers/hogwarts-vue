@@ -3,7 +3,7 @@
     <div class="mb-6 text-lg md:text-2xl">
       <!-- Searching -->
       <div class="grid gap-2 sm:gap-4 grid-cols-[auto_4rem] sm:grid-cols-[7rem_1fr] mb-4">
-        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark border-${theme}-accent placeholder-${theme}-accent`" class="w-full border-2 p-2 outline-none">
+        <input @keydown.enter="verifyHacking" @input="$emit('updateSearch', $event.target.value)" :value="search" placeholder="Search..." :class="`bg-${theme}-dark border-${theme}-accent placeholder-${theme}-accent`" class="w-full border-2 p-2 outline-none placeholder:opacity-60">
         <IconWand :class="`fill-${theme}-accent`" class="h-12 place-self-center sm:row-start-1 sm:col-start-1"/>
       </div>
       <!-- Filtering -->
