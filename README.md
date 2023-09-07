@@ -1,8 +1,8 @@
-# ![hogwarts crest](https://github.com/malthesers/hogwarts/blob/main/favicon/favicon-32x32.png) Hogwarts
+# ![hogwarts crest](https://github.com/malthesers/hogwarts-vue/blob/main/favicon/favicon-32x32.png) Hogwarts
 
 Vue clone of [Hogwarts](https://github.com/malthesers/hogwarts).
 
-Assume the role of a Hogwarts system administrator [right here](https://malthesers.github.io/hogwarts/).
+Assume the role of a Hogwarts system administrator [right here](https://malthesers.github.io/hogwarts-vue/).
 
 ## 📋 Instructions
 
