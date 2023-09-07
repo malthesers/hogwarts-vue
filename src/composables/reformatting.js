@@ -86,7 +86,7 @@ function getPhoto(unformattedStudent, lastNameList) {
 
   let photoSrc = `${lastName}_${firstName}.png`;
 
-  if (photoSrc.includes("undefined")) photoSrc = "_default.png";
+  if (photoSrc.includes("undefined")) photoSrc = "default.png";
 
   return photoSrc;
 }

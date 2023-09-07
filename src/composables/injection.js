@@ -7,7 +7,7 @@ export default function getMyself() {
     lastName: "Lauritsen",
     gender: "Male",
     house: getRandomHouse(),
-    photo: `_default.png`,
+    photo: `default.png`,
     bloodStatus: "Half-breed",
     captain: false,
     prefect: false,
