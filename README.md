@@ -1,4 +1,4 @@
-# ![hogwarts crest](https://github.com/malthesers/hogwarts-vue/blob/main/favicon/favicon-32x32.png) Hogwarts
+# ![hogwarts crest](public/favicon-32x32.png) Hogwarts (Vue)
 
 Vue clone of [Hogwarts](https://github.com/malthesers/hogwarts).
 
