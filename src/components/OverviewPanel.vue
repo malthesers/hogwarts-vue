@@ -30,7 +30,7 @@
         </div>
       </div>
       <!-- Hogwarts crest and current display -->
-      <img :src="`/images/crests/${theme}-crest.svg`" alt="Hogwarts Crest" class="w-full max-w-[12rem] mx-auto col-span-2 xs:col-span-1">      
+      <img :src="`./images/crests/${theme}-crest.svg`" alt="Hogwarts Crest" class="w-full max-w-[12rem] mx-auto col-span-2 xs:col-span-1">      
       <div class="text-xl sm:text-2xl mt-4 lg:mt-0 col-span-2 lg:col-span-1 lg:row-start-2 lg:row-end-2">
         <p class="inline-block">Currently Displayed: </p>
         <Transition name="fade" mode="out-in">
