@@ -16,7 +16,7 @@
           </p>
           <!-- Filtering dropwdown -->
           <Transition name="slide">
-            <div v-if="showFilteringMethods" class="max-h-72 overflow-hidden">
+            <div v-if="showFilteringMethods" class="max-h-80 overflow-hidden">
               <p v-for="(name, method) in filteringMethods" :key="method" @click="$emit('updateFilter', method), showFilteringMethods = false" :class="`bg-${theme}-dark border-${theme}-accent`" class="border-2 border-t-0 p-2">
                 <span>{{ name }}</span>
               </p>
