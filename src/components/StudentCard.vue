@@ -96,7 +96,7 @@ function togglePrefect() {
     addToMessages('house', props.student.house, props.isCursed)
   } else if (housePrefects.value.some(student => student.gender === props.student.gender)) {
     prefectButton.value.classList.add('shake')
-    addToMessages('house', props.student.house, props.isCursed)
+    addToMessages('gender', props.student.house, props.isCursed)
   } else {
     props.student.prefect = true
   }
