@@ -4,6 +4,10 @@ Assume the role of a Hogwarts system administrator [right here](https://malthese
 
 Or visit the [original](https://github.com/malthesers/hogwarts). Or the [React](https://github.com/malthesers/hogwarts-react) clone.
 
+[![My Skills](https://skillicons.dev/icons?i=js)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vue)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react)](https://skillicons.dev)
+
 ## 📋 Instructions
 
 ### 🏠 House Navigation
