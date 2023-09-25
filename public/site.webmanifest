@@ -1,6 +1,8 @@
 {
     "name": "Hogwarts Student List",
     "short_name": "Hogwarts",
+    "start_url": "/hogwarts-vue/",
+    "description": "Assume the role of a Hogwarts system administrator (but in Vue).",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
